@@ -16,6 +16,8 @@ class Node(object):
         '''
         self.children = []
     
+    def add(self, n):
+        self.children.append(n)
     
     def draw_all(self):
         self.draw()
