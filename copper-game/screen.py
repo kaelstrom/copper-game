@@ -5,6 +5,7 @@ Created on Sep 30, 2012
 '''
 
 import pygame
+import game
 
 class Screen(object):
     '''
@@ -19,8 +20,11 @@ class Screen(object):
         #self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
         self.screen = pygame.display.set_mode((800,800))
         self.res = self.screen.get_rect()
-        self.default_font = pygame.font.SysFont("arial", 48)
+        self.default_font = game.font_arial
         
+    def blit(self, surf, rect):
+        disp_rect = self.scale_rect(rect)
+        self.screen.blit(surf, disp_rect)
     
     def draw_text(self, text="", rect=pygame.Rect(0,0,1000,1000)):
         font = self.default_font    

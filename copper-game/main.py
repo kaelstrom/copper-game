@@ -8,6 +8,7 @@ import screen
 import node
 import stringnode
 import textnode
+import stringswapgame
 import choicenode
 import pygame
 import game
@@ -21,11 +22,12 @@ class Game(object):
         Constructor
         '''
         self.running = False
-        pygame.init()
+        game.init()
         self.screen = screen.Screen()
         self.clock = pygame.time.Clock()
         self.dt = 0
         test = node.Node()
+        test.add(stringswapgame.StringSwapGame("cupcake", "fish taco"))
         c = choicenode.ChoiceNode(pygame.Rect(50,50,300,300))
         c.add(stringnode.StringNode("test\n chunk one\ntest\ntest", pygame.Rect(000,200,800,800)))
         test.add(c)
