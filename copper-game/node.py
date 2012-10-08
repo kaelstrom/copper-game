@@ -26,3 +26,19 @@ class Node(object):
             
     def draw(self):
         pass
+    
+    def act_all(self):
+        self.act()
+        for child in self.children:
+            child.act_all()
+            
+    def act(self):
+        pass
+    
+    def input_all(self, events):
+        self.input(events)
+        for child in self.children:
+            child.input_all(events)
+            
+    def input(self, events):
+        pass

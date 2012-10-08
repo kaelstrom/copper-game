@@ -25,13 +25,14 @@ class Game(object):
         game.init()
         self.screen = screen.Screen()
         self.clock = pygame.time.Clock()
-        self.dt = 0
         test = node.Node()
-        test.add(stringswapgame.StringSwapGame("cupcake", "fish taco"))
+        test.add(stringswapgame.StringSwapGame("cupcake", "tire iron"))
+        '''
         c = choicenode.ChoiceNode(pygame.Rect(50,50,300,300))
         c.add(stringnode.StringNode("test\n chunk one\ntest\ntest", pygame.Rect(000,200,800,800)))
         test.add(c)
         test.add(stringnode.StringNode("test chunk 2\nLorem Ipsum", pygame.Rect(500,500,500,200)))
+        '''
         self.active_node = test
     
     def start(self):
@@ -40,21 +41,23 @@ class Game(object):
     def main_loop(self):
         self.running = True
         while(self.running):
-            self.dt = self.clock.tick(60)
+            game.dt = self.clock.tick(60)
             self.input()
             self.act()
             self.draw()
         
     def input(self):
-        for event in pygame.event.get():
+        events = pygame.event.get() 
+        for event in events:
             if event.type == pygame.QUIT:
                 self.running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
+        self.active_node.input_all(events)
                     
     def act(self):
-        pass
+        self.active_node.act_all()
     
     def draw(self):
         self.screen.clear()
