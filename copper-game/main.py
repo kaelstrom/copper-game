@@ -26,7 +26,7 @@ class Game(object):
         self.screen = screen.Screen()
         self.clock = pygame.time.Clock()
         test = node.Node()
-        test.add(stringswapgame.StringSwapGame("cupcake", "tire iron"))
+        test.add(stringswapgame.StringSwapGame("limited sale", "expensive", speed=.0004, delay=.5, threshold=.08))
         '''
         c = choicenode.ChoiceNode(pygame.Rect(50,50,300,300))
         c.add(stringnode.StringNode("test\n chunk one\ntest\ntest", pygame.Rect(000,200,800,800)))

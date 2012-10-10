@@ -23,8 +23,9 @@ class SwapLetter(node.Node):
         game.screen.blit(self.surf, self.rect)
         
 class LetterPair(node.Node):
-    def __init__(self, lft, rht, speed=.0004):
+    def __init__(self, lft, rht, rect, speed, delay, threshold):
         super(LetterPair, self).__init__()
+        self.threshold = threshold
         self.lft = lft
         self.rht = rht
         self.children.append(self.lft)
@@ -37,25 +38,53 @@ class LetterPair(node.Node):
         self.bottom = rht.rect.y
         self.dist = self.bottom - self.top
         self.speed = speed
+        self.delay = delay
+        self.rect = rect
         self.active = False
         self.cback_waiting = True
+        self.rht_hit = False
+        self.lft_hit = False
+        self.getting_input = False
         
     def move(self, cback):
         if self.active:
             self.progress += self.speed * game.dt
-            self.lft.rect.y = self.top + self.dist*self.progress
-            self.rht.rect.y = self.bottom - self.dist*self.progress
-            if self.progress >= .5 and self.cback_waiting:
-                self.cback_waiting = False
-                cback()
             if self.progress >= 1:
                 self.progress = 1
                 self.active = False
+            self.lft.rect.y = self.top + self.dist*self.progress
+            self.rht.rect.y = self.bottom - self.dist*self.progress
+            if self.progress >= self.delay and self.cback_waiting:
+                self.cback_waiting = False
+                cback()
+                
+    def act(self):
+        if self.active and self.progress <= .5 + self.threshold and self.progress >= .5 - self.threshold:
+            self.getting_input = True
+            
+        else:
+            self.getting_input = False
+                
+    def draw_bg(self):
+        if self.active:
+            game.screen.draw_outline(self.rect, (50,50,50), 0)
+        if self.getting_input:
+            game.screen.draw_outline(self.rect, (0,0,80), 0)
+        if self.success:
+            game.screen.draw_outline(self.rect, (0,80,0), 0)
+        elif self.progress > .5 + self.threshold:
+            game.screen.draw_outline(self.rect, (80,0,0), 0)
                 
     def input(self, events):
-        for e in events:
-            if e.type == pygame.KEYDOWN:
-                print e.key
+        if self.getting_input:
+            for e in events:
+                if e.type == pygame.KEYDOWN:
+                    if e.unicode == self.lft.key:
+                        self.lft_hit = True
+                    if e.unicode == self.rht.key:
+                        self.rht_hit = True
+                    if self.rht_hit and self.lft_hit:
+                        self.success = True
         
 
 class StringSwapGame(node.Node):
@@ -64,11 +93,14 @@ class StringSwapGame(node.Node):
     '''
 
 
-    def __init__(self, start="", end="", cback=None, rect=pygame.Rect(200,300,600,400)):
+    def __init__(self, start="", end="", cback=None, rect=pygame.Rect(200,300,600,400), speed=.0004, delay=.5, threshold = .07):
         '''
         Constructor
         '''
         super(StringSwapGame, self).__init__()
+        self.speed = speed
+        self.delay = delay
+        self.threshold = threshold
         self.start = start
         self.end = end
         self.cback = cback
@@ -92,11 +124,11 @@ class StringSwapGame(node.Node):
                 e = end[i]
             else: 
                 e = ' '
-            if s != e:
-                self.swaplist.append( LetterPair(
-                     SwapLetter(s,pygame.Rect((i*2+0.2)*width+x,y,               width,width*1.5)),
-                     SwapLetter(e,pygame.Rect((i*2+1.2)*width+x,y+height-width*2,width,width*1.5))))
-                self.draw_rects.append(pygame.Rect((i*2)*width+x-width*.1,y,2*width,height))
+            lft = SwapLetter(s,pygame.Rect((i*2+0.2)*width+x,y,               width,width*1.5))
+            rht = SwapLetter(e,pygame.Rect((i*2+1.2)*width+x,y+height-width*2,width,width*1.5))
+            draw_rect = pygame.Rect((i*2)*width+x-width*.1,y,2*width,height)
+            self.swaplist.append( LetterPair(lft, rht, draw_rect, self.speed, self.delay, self.threshold) )
+            self.draw_rects.append(draw_rect)
         
         for s in self.swaplist:
             self.children.append(s)
@@ -113,13 +145,15 @@ class StringSwapGame(node.Node):
         pass
         
     def next(self):
-        self.swapindex += 1
+        self.swapindex = (self.swapindex + 1)%len(self.swaplist)
         if self.swapindex >= 0 and self.swapindex < len(self.swaplist):
             self.swaplist[self.swapindex].active = True
         if self.swapindex > len(self.swaplist)-1 and self.cback is not None:
             self.cback()
     
     def draw(self):
+        for s in self.swaplist:
+            s.draw_bg()
         for r in self.draw_rects:
             game.screen.draw_outline(r, (50,50,50), 2)
         game.screen.draw_outline(self.rect)
@@ -133,6 +167,7 @@ class StringSwapGame(node.Node):
     def act_all(self):
         self.act()
         for s in self.swaplist:
+            s.act()
             s.move(self.next)
         
         
