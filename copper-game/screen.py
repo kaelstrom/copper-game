@@ -27,10 +27,13 @@ class Screen(object):
         disp_surf = pygame.transform.scale(surf, (disp_rect.width, disp_rect.height))
         self.screen.blit(disp_surf, disp_rect)
     
-    def draw_text(self, text="", rect=pygame.Rect(0,0,1000,1000)):
-        font = self.default_font    
-        disp_surf = font.render(text,1,(150,150,150))
+    def draw_text(self, text="", rect=pygame.Rect(0,0,1000,1000), font = None, scaling = False, color = (150,150,150)):
+        if font is None:
+            font = self.default_font    
+        disp_surf = font.render(text,1,color)
         disp_rect = self.scale_rect(rect)
+        if scaling:
+            disp_surf = pygame.transform.scale(disp_surf, (disp_rect.width, disp_rect.height))
         self.screen.blit(disp_surf,disp_rect)
         
     def draw_outline(self, rect, color=(200,200,200), width=4):

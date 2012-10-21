@@ -34,6 +34,7 @@ class LetterPair(node.Node):
             self.rht.rect.x = self.rht.rect.x - self.rht.rect.width*.2
         self.progress = 0
         self.success = False
+        self.failure = False
         self.top = lft.rect.y
         self.bottom = rht.rect.y
         self.dist = self.bottom - self.top
@@ -47,7 +48,7 @@ class LetterPair(node.Node):
         self.getting_input = False
         
     def move(self, cback):
-        if self.active:
+        if self.active and not self.failure:
             self.progress += self.speed * game.dt
             if self.progress >= 1:
                 self.progress = 1
@@ -66,13 +67,14 @@ class LetterPair(node.Node):
             self.getting_input = False
                 
     def draw_bg(self):
-        if self.active:
-            game.screen.draw_outline(self.rect, (50,50,50), 0)
+        #if self.active:
+        #    game.screen.draw_outline(self.rect, (50,50,50), 0)
         if self.getting_input:
             game.screen.draw_outline(self.rect, (0,0,80), 0)
         if self.success:
             game.screen.draw_outline(self.rect, (0,80,0), 0)
         elif self.progress > .5 + self.threshold:
+            self.failure = True
             game.screen.draw_outline(self.rect, (80,0,0), 0)
                 
     def input(self, events):
@@ -93,11 +95,12 @@ class StringSwapGame(node.Node):
     '''
 
 
-    def __init__(self, start="", end="", cback=None, rect=pygame.Rect(200,300,600,400), speed=.0004, delay=.5, threshold = .07):
+    def __init__(self, start="", end="", cback=None, rect=pygame.Rect(100,300,800,400), speed=.0003, delay=.25, threshold = .07):
         '''
         Constructor
         '''
         super(StringSwapGame, self).__init__()
+        self.paused = True
         self.speed = speed
         self.delay = delay
         self.threshold = threshold
@@ -137,7 +140,6 @@ class StringSwapGame(node.Node):
         self.hit_rect.width = self.hit_rect.width - width*.1
         self.rect.x = self.rect.x - width*.1
         self.hit_rect.x = self.hit_rect.x - width*.1
-        self.swaplist[0].active = True
         
     def act(self):
         #if self.swapindex >= 0 and self.swapindex < len(self.swaplist):
@@ -169,6 +171,12 @@ class StringSwapGame(node.Node):
         for s in self.swaplist:
             s.act()
             s.move(self.next)
+            
+    def input(self, events):
+        for e in events:
+            if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE and self.paused:
+                self.paused = False
+                self.swaplist[0].active = True
         
         
 if __name__ == '__main__':
