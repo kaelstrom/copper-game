@@ -10,6 +10,7 @@ import stringnode
 import textnode
 import stringswapgame
 import choicenode
+import contactnode
 import pygame
 import game
 
@@ -25,15 +26,20 @@ class Game(object):
         game.init()
         self.screen = screen.Screen()
         self.clock = pygame.time.Clock()
+        self.scene_num = 1
+        self.scenes = []
         test = node.Node()
-        test.add(stringswapgame.StringSwapGame("limited sale", "expensive", speed=.0004, delay=.5, threshold=.08))
+        test.add(stringswapgame.StringSwapGame("cupcake", "expensive", speed=.0003, delay=.25, threshold=.08))
+        self.scenes.append(test)
+        
+        self.scenes.append(contactnode.make_teen())
         '''
         c = choicenode.ChoiceNode(pygame.Rect(50,50,300,300))
         c.add(stringnode.StringNode("test\n chunk one\ntest\ntest", pygame.Rect(000,200,800,800)))
         test.add(c)
         test.add(stringnode.StringNode("test chunk 2\nLorem Ipsum", pygame.Rect(500,500,500,200)))
         '''
-        self.active_node = test
+        self.active_node = self.scenes[self.scene_num]
     
     def start(self):
         self.main_loop()
@@ -52,6 +58,9 @@ class Game(object):
             if event.type == pygame.QUIT:
                 self.running = False
             if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    self.scene_num = (self.scene_num + 1) % len(self.scenes)
+                    self.active_node = self.scenes[self.scene_num]
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
         self.active_node.input_all(events)
