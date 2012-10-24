@@ -21,6 +21,8 @@ class Screen(object):
         self.screen = pygame.display.set_mode((800,800))
         self.res = self.screen.get_rect()
         self.default_font = game.font_arial
+        self.dimmer = pygame.Surface(self.screen.get_size())
+        self.dimmer.fill((0,0,0))
         
     def blit(self, surf, rect):
         disp_rect = self.scale_rect(rect)
@@ -46,6 +48,10 @@ class Screen(object):
         new_rect.height = self.res.height*.001*rect.height
         new_rect.topleft = (rect.x*self.res.width*.001, rect.y*self.res.height*.001)
         return new_rect
+        
+    def dim(self, val=200):
+        self.dimmer.set_alpha(val)
+        self.screen.blit(self.dimmer,(0,0))
         
     def clear(self):
         self.screen.fill((0,0,0))

@@ -142,16 +142,16 @@ class StringSwapGame(node.Node):
         self.hit_rect.x = self.hit_rect.x - width*.1
         
     def act(self):
-        #if self.swapindex >= 0 and self.swapindex < len(self.swaplist):
-        #    self.swaplist[self.swapindex].move(self.next)
-        pass
+        if self.cback is not None:
+            for s in self.swaplist:
+                if not (s.success or s.failure):
+                    return
+            self.cback()
         
     def next(self):
         self.swapindex = (self.swapindex + 1)%len(self.swaplist)
         if self.swapindex >= 0 and self.swapindex < len(self.swaplist):
             self.swaplist[self.swapindex].active = True
-        if self.swapindex > len(self.swaplist)-1 and self.cback is not None:
-            self.cback()
     
     def draw(self):
         for s in self.swaplist:

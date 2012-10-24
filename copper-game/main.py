@@ -11,6 +11,7 @@ import textnode
 import stringswapgame
 import choicenode
 import contactnode
+import emailnode
 import pygame
 import game
 
@@ -26,19 +27,30 @@ class Game(object):
         game.init()
         self.screen = screen.Screen()
         self.clock = pygame.time.Clock()
-        self.scene_num = 1
+        self.scene_num = 0
         self.scenes = []
-        test = node.Node()
-        test.add(stringswapgame.StringSwapGame("cupcake", "expensive", speed=.0003, delay=.25, threshold=.08))
-        self.scenes.append(test)
+        self.ldraw = None
+        self.activescenestack = []
+        #test = node.Node()
+        #test.add(stringswapgame.StringSwapGame("cupcake", "expensive", speed=.0003, delay=.25, threshold=.08))
+        #self.scenes.append(test)
+        
+        self.scenes.append(emailnode.EmailNode(
+			"From: investnews@consumerbuy.com\n" +
+			"  Commercial property has been\n" +
+			"  doing well for a while, and it\n" +
+			"  appears the {residential|automotive}market \n" +
+			"  is now following.{Sellers|Buyers} have \n" +
+			"  a big chance to profit soon. \n",
+			pygame.Rect(100,100,800,800)))
         
         self.scenes.append(contactnode.make_teen())
-        '''
-        c = choicenode.ChoiceNode(pygame.Rect(50,50,300,300))
-        c.add(stringnode.StringNode("test\n chunk one\ntest\ntest", pygame.Rect(000,200,800,800)))
-        test.add(c)
-        test.add(stringnode.StringNode("test chunk 2\nLorem Ipsum", pygame.Rect(500,500,500,200)))
-        '''
+        
+        #c = choicenode.ChoiceNode(pygame.Rect(50,50,300,100))
+        #c.add(stringnode.StringNode("testing", pygame.Rect(050,050,300,100)))
+        #c.add(stringnode.StringNode("results", pygame.Rect(150,050,300,100)))
+        #self.scenes.append(c)
+        
         self.active_node = self.scenes[self.scene_num]
     
     def start(self):
@@ -71,7 +83,14 @@ class Game(object):
     def draw(self):
         self.screen.clear()
         self.active_node.draw_all()
+        if self.ldraw is not None:
+			self.ldraw()
+			self.ldraw = None
         pygame.display.flip()
+        
+    def last_draw(self, func):
+		self.ldraw = func
+		
     
 if __name__ == '__main__':
     g = Game()

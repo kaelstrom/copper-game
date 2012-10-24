@@ -20,12 +20,16 @@ class StringNode(node.Node):
         '''
         super(StringNode, self).__init__()
         self.text = text
-        lines = text.split('\n')
-        disp_rect = rect.inflate(1, 1.0/len(lines))
-        print rect
-        print disp_rect
-        print "lines: " + str(len(lines))
-        for line in lines:
-            self.children.append(textnode.TextNode(line, disp_rect.copy()))
-            disp_rect.move_ip(0,rect.height/len(lines))
+        self.rect = rect
+        
+        self.set_rect(self.rect)
+        
+    def set_rect(self, rect):
+        self.rect = rect
+        self.lines = self.text.split('\n')
+        self.disp_rect = self.rect.inflate(1, 1.0/len(self.lines))
+        self.children = []
+        for line in self.lines:
+            self.children.append(textnode.TextNode(line, self.disp_rect.copy()))
+            self.disp_rect.move_ip(0,rect.height/len(self.lines))
         
