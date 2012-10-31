@@ -8,6 +8,7 @@ import game
 import pygame
 import screen
 import node
+import sound
 
 class SwapLetter(node.Node):
     def __init__(self, letter, rect):
@@ -61,6 +62,9 @@ class LetterPair(node.Node):
                 
     def act(self):
         if self.active and self.progress <= .5 + self.threshold and self.progress >= .5 - self.threshold:
+            if not self.getting_input:
+                global current_game
+                current_game.play_chime()
             self.getting_input = True
             
         else:
@@ -86,9 +90,12 @@ class LetterPair(node.Node):
                     if e.unicode == self.rht.key:
                         self.rht_hit = True
                     if self.rht_hit and self.lft_hit:
+                        if not self.success:
+                            global current_game
+                            current_game.success_count += 1
                         self.success = True
         
-
+current_game = None
 class StringSwapGame(node.Node):
     '''
     classdocs
@@ -100,6 +107,9 @@ class StringSwapGame(node.Node):
         Constructor
         '''
         super(StringSwapGame, self).__init__()
+        global current_game
+        current_game = self
+        self.success_count = 0
         self.paused = True
         self.speed = speed
         self.delay = delay
@@ -177,7 +187,9 @@ class StringSwapGame(node.Node):
             if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE and self.paused:
                 self.paused = False
                 self.swaplist[0].active = True
-        
+                
+    def play_chime(self):
+        sound.play_sound("chime" + str( min(11, 1 + self.success_count) ) + ".ogg")
         
 if __name__ == '__main__':
     game.init()
