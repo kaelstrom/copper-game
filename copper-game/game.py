@@ -7,6 +7,8 @@ screen = None
 dt = 0
 font_arial = None
 font_tempesta = None
+teen = None
+teenvalue = None
 
 def init():
     global font_arial, font_tempesta

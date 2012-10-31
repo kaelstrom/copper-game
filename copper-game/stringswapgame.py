@@ -9,6 +9,7 @@ import pygame
 import screen
 import node
 import sound
+import uservaluenode
 
 class SwapLetter(node.Node):
     def __init__(self, letter, rect):
@@ -171,10 +172,10 @@ class StringSwapGame(node.Node):
         game.screen.draw_outline(self.rect)
         game.screen.draw_outline(self.hit_rect)
     
-    def draw_all(self):
-        self.draw()
-        for p in self.swaplist:
-            p.draw_all()
+   # def draw_all(self):
+    #    self.draw()
+     #   for p in self.swaplist:
+      #      p.draw_all()
             
     def act_all(self):
         self.act()

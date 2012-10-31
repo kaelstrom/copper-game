@@ -31,20 +31,23 @@ class Game(object):
         self.scenes = []
         self.ldraw = None
         self.activescenestack = []
+        self.teen = contactnode.make_teen()
+        game.teen = self.teen
         #test = node.Node()
         #test.add(stringswapgame.StringSwapGame("cupcake", "expensive", speed=.0003, delay=.25, threshold=.08))
         #self.scenes.append(test)
         
         self.scenes.append(emailnode.EmailNode(
-			"From: investnews@consumerbuy.com\n" +
-			"  Commercial property has been\n" +
-			"  doing well for a while, and it\n" +
-			"  appears the {residential|automotive}market \n" +
-			"  is now following.{Sellers|Buyers} have \n" +
-			"  a big chance to profit soon. \n",
-			pygame.Rect(100,100,800,800)))
+            "From: investnews@consumerbuy.com\n" +
+            "  Commercial property has been\n" +
+            "  doing well for a while, and it\n" +
+            "  appears the {residential|automotive}market \n" +
+            "  is now following.{Sellers|Buyers} have \n" +
+            "  a big chance to profit soon. \n",
+            [[[0,0,0],[3,0,0]],[[-2,0,0],[4,0,2]]],
+            pygame.Rect(100,100,800,800)))
         
-        self.scenes.append(contactnode.make_teen())
+        self.scenes.append(self.teen)
         
         #c = choicenode.ChoiceNode(pygame.Rect(50,50,300,100))
         #c.add(stringnode.StringNode("testing", pygame.Rect(050,050,300,100)))
