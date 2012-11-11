@@ -20,8 +20,11 @@ class TextNode(node.Node):
         super(TextNode, self).__init__()
         self.text = text
         self.rect = rect
+        self.orig_rect= game.screen.get_text_rect(self.text)
+        
         
     def draw(self):
-        game.screen.draw_text(self.text, self.rect)
+        game.screen.draw_text(self.text, self.rect, scaling=self.scaling, plasma = self.plasma)
+        #game.screen.draw_outline(self.orig_rect.move(self.rect.x, self.rect.y))
         
         

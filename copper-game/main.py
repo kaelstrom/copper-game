@@ -14,6 +14,9 @@ import contactnode
 import emailnode
 import pygame
 import game
+import fx
+import cProfile
+import copy
 
 class Game(object):
     '''
@@ -26,9 +29,13 @@ class Game(object):
         self.running = False
         game.init()
         self.screen = screen.Screen()
+        game.game = self
+        game.screen = self.screen
         self.clock = pygame.time.Clock()
         self.scene_num = 0
         self.scenes = []
+        fx.init()
+        
         self.ldraw = None
         self.activescenestack = []
         self.teen = contactnode.make_teen()
@@ -37,15 +44,7 @@ class Game(object):
         #test.add(stringswapgame.StringSwapGame("cupcake", "expensive", speed=.0003, delay=.25, threshold=.08))
         #self.scenes.append(test)
         
-        self.scenes.append(emailnode.EmailNode(
-            "From: investnews@consumerbuy.com\n" +
-            "  Commercial property has been\n" +
-            "  doing well for a while, and it\n" +
-            "  appears the {residential|automotive}market \n" +
-            "  is now following.{Sellers|Buyers} have \n" +
-            "  a big chance to profit soon. \n",
-            [[[0,0,0],[3,0,0]],[[-2,0,0],[4,0,2]]],
-            pygame.Rect(100,100,800,800)))
+        self.scenes.append(emailnode.test_email())
         
         self.scenes.append(self.teen)
         
@@ -63,6 +62,7 @@ class Game(object):
         self.running = True
         while(self.running):
             game.dt = self.clock.tick(60)
+            game.time += game.dt
             self.input()
             self.act()
             self.draw()
@@ -76,27 +76,35 @@ class Game(object):
                 if event.key == pygame.K_LEFT:
                     self.scene_num = (self.scene_num + 1) % len(self.scenes)
                     self.active_node = self.scenes[self.scene_num]
+                if event.key == pygame.K_RIGHT:
+                    self.fade_to_scene(emailnode.test_email())
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
         self.active_node.input_all(events)
                     
     def act(self):
         self.active_node.act_all()
+        fx.update()
     
     def draw(self):
         self.screen.clear()
         self.active_node.draw_all()
         if self.ldraw is not None:
-			self.ldraw()
-			self.ldraw = None
+            self.ldraw()
+            self.ldraw = None
         pygame.display.flip()
         
+    def fade_to_scene(self, scene):
+        self.active_node = scene
+        
     def last_draw(self, func):
-		self.ldraw = func
-		
+        self.ldraw = func
+        
+        
+def initialize():
+    g = Game()
+    g.start()
+    #cProfile.run('g.start()')
     
 if __name__ == '__main__':
-    g = Game()
-    game.game = g
-    game.screen = g.screen
-    g.start()
+    initialize()

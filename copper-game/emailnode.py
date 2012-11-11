@@ -43,26 +43,42 @@ class EmailNode(node.Node):
         c = 0
         for line in self.lines:
             if '{' not in line and '}' not in line:
-                self.children.append(textnode.TextNode(line, self.disp_rect.copy()))
+                self.add(textnode.TextNode(line, self.disp_rect.copy()))
                 self.disp_rect.move_ip(0,spacing)
             else:
                 lft = line.split('{')[0]
                 rht = line.split('{')[1].split('}')[1]
                 a,b = line.split('{')[1].split('}')[0].split('|')
                 line_edit = lft + ''.join(['  ' for i in range(max(len(a), len(b)) + 2)]) + rht
-                self.children.append(textnode.TextNode(line_edit, self.disp_rect.copy()))
+                tmp = textnode.TextNode(line_edit, self.disp_rect.copy())
+                self.add(tmp)
                 choice_rect = self.disp_rect.copy()
                 choice_rect.width = 20 * max(len(a), len(b))
                 choice_rect.height = 60
+                #choice_rect.x = tmp.orig_rect.right
                 for i in lft:
-                    choice_rect.move_ip(20,0)
+                   choice_rect.move_ip(20,0)
                 cnode = choicenode.ChoiceNode(a,b, vals=self.vals[c], rect=choice_rect.copy())
                 if len(a) <= 8:
                     cnode.mode = 'hard'
-                self.choicenodes.append(cnode)
+                if line != '\n':
+                    self.choicenodes.append(cnode)
                 c+=1
                 self.disp_rect.move_ip(0,spacing)
                 
         self.choicenodes.reverse()
         for c in self.choicenodes:
-            self.children.append(c)
+            self.add(c)
+
+
+
+def test_email():
+        return EmailNode(
+            "From: investnews@consumerbuy.com\n" +
+            "  Commercial property has been\n" +
+            "  doing well for a while, and it\n" +
+            "  appears the {residential|automotive}market \n" +
+            "  is now following.{Sellers|Buyers} have \n" +
+            "  a big chance to profit soon.",
+            [[[0,0,0],[3,0,0]],[[-2,0,0],[4,0,2]]],
+            pygame.Rect(100,100,800,800))

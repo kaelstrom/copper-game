@@ -30,6 +30,7 @@ class StringNode(node.Node):
         self.disp_rect = self.rect.inflate(1, 1.0/len(self.lines))
         self.children = []
         for line in self.lines:
-            self.children.append(textnode.TextNode(line, self.disp_rect.copy()))
+            self.add(textnode.TextNode(line, self.disp_rect.copy()))
             self.disp_rect.move_ip(0,rect.height/len(self.lines))
+        self.set_all('plasma', self.plasma)
         

@@ -15,14 +15,23 @@ class Node(object):
         Constructor
         '''
         self.children = []
+        self.parent = None
+        self.plasma = False
+        self.scaling = False
     
     def add(self, n):
+        n.parent = self
         self.children.append(n)
     
     def draw_all(self):
         self.draw()
         for child in self.children:
             child.draw_all()
+            
+    def set_all(self, var, val):
+        self.__dict__[var] = val
+        for child in self.children:
+            child.set_all(var, val)
             
     def draw(self):
         pass

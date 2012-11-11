@@ -10,19 +10,24 @@ import screen
 import node
 import sound
 import uservaluenode
+import random
+import string
 
 class SwapLetter(node.Node):
     def __init__(self, letter, rect):
         super(SwapLetter, self).__init__()
+        self.rect = rect
+        self.set_letter(letter)
+        
+    def set_letter(self, letter):
         self.letter = self.key = letter
         if self.letter == ' ':
             self.letter = 'Spc'
         self.letter = self.letter + ' '
-        self.rect = rect
-        self.surf = game.font_tempesta.render(self.letter,0,(200,200,200))
+        self.surf = game.font_tempesta.render(self.letter,1,(200,200,200))
         
     def draw(self):
-        game.screen.blit(self.surf, self.rect)
+        game.screen.blit(self.surf, self.rect, plasma=True)
         
 class LetterPair(node.Node):
     def __init__(self, lft, rht, rect, speed, delay, threshold):
@@ -70,6 +75,15 @@ class LetterPair(node.Node):
             
         else:
             self.getting_input = False
+            
+        
+        if not self.failure and not self.success and self.progress > .5 + self.threshold:
+            self.failure = True
+            r = random.choice(string.punctuation)
+            self.parent.result_text += r
+            self.lft.set_letter(r)
+            self.rht.set_letter(r)
+            sound.play_sound('fail.ogg')
                 
     def draw_bg(self):
         #if self.active:
@@ -78,8 +92,7 @@ class LetterPair(node.Node):
             game.screen.draw_outline(self.rect, (0,0,80), 0)
         if self.success:
             game.screen.draw_outline(self.rect, (0,80,0), 0)
-        elif self.progress > .5 + self.threshold:
-            self.failure = True
+        elif self.failure:
             game.screen.draw_outline(self.rect, (80,0,0), 0)
                 
     def input(self, events):
@@ -94,6 +107,7 @@ class LetterPair(node.Node):
                         if not self.success:
                             global current_game
                             current_game.success_count += 1
+                            self.parent.result_text += self.rht.key
                         self.success = True
         
 current_game = None
@@ -110,6 +124,7 @@ class StringSwapGame(node.Node):
         super(StringSwapGame, self).__init__()
         global current_game
         current_game = self
+        self.result_text = ''
         self.success_count = 0
         self.paused = True
         self.speed = speed
@@ -141,7 +156,9 @@ class StringSwapGame(node.Node):
             lft = SwapLetter(s,pygame.Rect((i*2+0.2)*width+x,y,               width,width*1.5))
             rht = SwapLetter(e,pygame.Rect((i*2+1.2)*width+x,y+height-width*2,width,width*1.5))
             draw_rect = pygame.Rect((i*2)*width+x-width*.1,y,2*width,height)
-            self.swaplist.append( LetterPair(lft, rht, draw_rect, self.speed, self.delay, self.threshold) )
+            lpair = LetterPair(lft, rht, draw_rect, self.speed, self.delay, self.threshold)
+            lpair.parent = self
+            self.swaplist.append( lpair )
             self.draw_rects.append(draw_rect)
         
         for s in self.swaplist:

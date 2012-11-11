@@ -5,6 +5,7 @@ import pygame
 game = None
 screen = None
 dt = 0
+time = 0
 font_arial = None
 font_tempesta = None
 teen = None
