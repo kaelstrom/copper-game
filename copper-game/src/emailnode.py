@@ -82,3 +82,8 @@ def test_email():
             "  a big chance to profit soon.",
             [[[0,0,0],[3,0,0]],[[-2,0,0],[4,0,2]]],
             pygame.Rect(100,100,800,800))
+            
+def from_script(script):
+    
+    
+    

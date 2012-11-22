@@ -17,6 +17,7 @@ import game
 import fx
 import cProfile
 import copy
+import scriptmanager
 
 class Game(object):
     '''
@@ -40,20 +41,10 @@ class Game(object):
         self.activescenestack = []
         self.teen = contactnode.make_teen()
         game.teen = self.teen
-        #test = node.Node()
-        #test.add(stringswapgame.StringSwapGame("cupcake", "expensive", speed=.0003, delay=.25, threshold=.08))
-        #self.scenes.append(test)
         
-        self.scenes.append(emailnode.test_email())
+        self.script = game.script = scriptmanager.ScriptManager("../res/script.txt")
         
-        self.scenes.append(self.teen)
-        
-        #c = choicenode.ChoiceNode(pygame.Rect(50,50,300,100))
-        #c.add(stringnode.StringNode("testing", pygame.Rect(050,050,300,100)))
-        #c.add(stringnode.StringNode("results", pygame.Rect(150,050,300,100)))
-        #self.scenes.append(c)
-        
-        self.active_node = self.scenes[self.scene_num]
+        self.active_node = self.script.active_node
     
     def start(self):
         self.main_loop()

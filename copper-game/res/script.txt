@@ -1,0 +1,27 @@
+%%%
+ID printer
+Mode email
+Day 1
+From Rich
+To John
+%%
+Hey-
+
+You get your printer working yet?
+We probably won't have time between
+classes to make the handout.
+
+~rich
+
+%%%
+ID printer_resp
+Mode email
+Response printer
+Day 1
+From John
+To Rich
+%%
+Working on it, still getting out the kinks in the new comp.
+P.S. Get your own printer
+P.P.S. [music "04 - Someone Great.mp3"]
+%%%

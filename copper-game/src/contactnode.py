@@ -47,7 +47,7 @@ def make_teen():
     tmp.age = "18"
     tmp.email = "user@gmail.com"
     tmp.phone = "555-1234"
-    tmp.picture = pygame.image.load("teen.png")
+    tmp.picture = pygame.image.load("../res/teen.png")
     tmp.profile1 = "high school senior, emotionally naive"
     tmp.profile2 = "child of congressional candidate"
     return tmp
