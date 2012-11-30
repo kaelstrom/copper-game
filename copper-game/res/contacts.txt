@@ -1,0 +1,13 @@
+%%%
+name Kissinger Systems
+blurb Tomorrow's Solutions, Today.
+image ks.png
+%%%
+name John
+image teen.png
+blurb high school senior, emotionally naive, child of congressional candidate
+%%%
+name AI
+image ai.png
+blurb Prototype UI
+%%%

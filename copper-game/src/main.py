@@ -1,9 +1,3 @@
-'''
-Created on Sep 29, 2012
-
-@author: kaelstrom
-'''
-
 import screen
 import node
 import stringnode
@@ -20,13 +14,7 @@ import copy
 import scriptmanager
 
 class Game(object):
-    '''
-    classdocs
-    '''
     def __init__(self):
-        '''
-        Constructor
-        '''
         self.running = False
         game.init()
         self.screen = screen.Screen()
@@ -42,9 +30,8 @@ class Game(object):
         self.teen = contactnode.make_teen()
         game.teen = self.teen
         
-        self.script = game.script = scriptmanager.ScriptManager("../res/script.txt")
-        
-        self.active_node = self.script.active_node
+        self.script = game.script = scriptmanager.ScriptManager("../res/script.txt", "../res/contacts.txt")
+        #game.active_node = emailnode.test_email()
     
     def start(self):
         self.main_loop()
@@ -54,6 +41,7 @@ class Game(object):
         while(self.running):
             game.dt = self.clock.tick(60)
             game.time += game.dt
+            self.active_node = game.active_node
             self.input()
             self.act()
             self.draw()
@@ -86,7 +74,7 @@ class Game(object):
         pygame.display.flip()
         
     def fade_to_scene(self, scene):
-        self.active_node = scene
+        game.active_node = scene
         
     def last_draw(self, func):
         self.ldraw = func

@@ -1,23 +1,10 @@
-'''
-Created on Sep 30, 2012
-
-@author: kaelstrom
-'''
-
 class Node(object):
-    '''
-    classdocs
-    '''
-
-
     def __init__(self):
-        '''
-        Constructor
-        '''
         self.children = []
         self.parent = None
         self.plasma = False
         self.scaling = False
+        self.scene_viewed = False
     
     def add(self, n):
         n.parent = self

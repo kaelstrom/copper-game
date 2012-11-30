@@ -1,26 +1,14 @@
-'''
-Created on 2012 - 10 - 24
-
-@author: kaelstrom
-'''
-
 import node
 import textnode
 import pygame
 import choicenode
 import game
 import uservaluenode
+import continuenode
+import contactnode
 
 class EmailNode(node.Node):
-    '''
-    classdocs
-    '''
-
-
-    def __init__(self, text, vals, rect=pygame.Rect(0,0,1000,1000)):
-        '''
-        Constructor
-        '''
+    def __init__(self, text="", vals=None, rect=pygame.Rect(0,0,1000,1000)):
         super(EmailNode, self).__init__()
         self.teenvalue = None
         if game.teenvalue is not None:
@@ -29,11 +17,51 @@ class EmailNode(node.Node):
             self.teenvalue = (uservaluenode.make_user(game.teen))
             game.teenvalue = self.teenvalue
         self.vals = vals
-        self.generate(text, rect)
-        
-    def generate(self, text, rect):
-        self.text = text
+        self.from_contact = None
+        self.to_contact = None
+        self.sender = None
+        self.to = None
         self.rect = rect
+        self.text = text
+        #self.generate(text, rect)
+        
+    def draw(self):
+        
+        from_rect = pygame.Rect(100,50,150,150)
+        to_rect = pygame.Rect(750,50,150,150)
+        color = (180,180,180)
+        
+        if self.from_contact is not None:
+            game.screen.draw_outline(from_rect.inflate(10,10), color, 2)
+            game.screen.blit(self.from_contact.image, from_rect)
+            game.screen.draw_text('From: ' + self.from_contact.name, pygame.Rect(260, 60,0,0), scaling=False, plasma=False)
+            game.screen.draw_outline(pygame.Rect(from_rect.inflate(10,10).right, 110, (to_rect.inflate(10,10).left-from_rect.inflate(10,10).right)-40, 1), color, 2)
+        if self.to_contact is not None:
+            game.screen.draw_outline(to_rect.inflate(10,10), color, 2)
+            game.screen.blit(self.to_contact.image, to_rect)
+            game.screen.draw_text('To: ' + self.to_contact.name, pygame.Rect(300, 120,0,0), scaling=False, plasma=False)
+            game.screen.draw_outline(pygame.Rect(from_rect.inflate(10,10).right+40, 170, (to_rect.inflate(10,10).left-from_rect.inflate(10,10).right)-40, 1), color, 2)
+            
+    def generate(self, text, rect):
+        if self.sender is None:
+            self.sender = 'unknown'
+        if self.sender.lower() not in game.contacts:
+            print 'sender ' + self.sender + ' not found'
+            self.sender = 'unknown'
+            
+        self.from_contact = game.contacts[self.sender.lower()]
+            
+        if self.to is None:
+            self.to = 'unknown'
+        if self.to.lower() not in game.contacts:
+            print 'recipient ' + self.to + ' not found'
+            self.to = 'unknown'
+            
+        self.to_contact = game.contacts[self.to.lower()]
+            
+        self.text = text
+        self.rect = rect.move(50,180)
+        self.rect.width = 900
         self.lines = self.text.split('\n')
         #spacing = 1.0/len(self.lines)
         spacing = 60
@@ -69,11 +97,11 @@ class EmailNode(node.Node):
         self.choicenodes.reverse()
         for c in self.choicenodes:
             self.add(c)
-
-
+        self.add(continuenode.ContinueNode())
+        self.add(game.teenvalue)
 
 def test_email():
-        return EmailNode(
+        tmp = EmailNode(
             "From: investnews@consumerbuy.com\n" +
             "  Commercial property has been\n" +
             "  doing well for a while, and it\n" +
@@ -82,8 +110,14 @@ def test_email():
             "  a big chance to profit soon.",
             [[[0,0,0],[3,0,0]],[[-2,0,0],[4,0,2]]],
             pygame.Rect(100,100,800,800))
+        tmp.generate(tmp.text, tmp.rect)
+        return tmp
             
 def from_script(script):
-    
+    tmp = EmailNode()
+    for pair in vars(script).items():
+        tmp.__dict__[pair[0]] = pair[1]
+    tmp.generate(tmp.text, tmp.rect)
+    return tmp
     
     

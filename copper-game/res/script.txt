@@ -1,8 +1,16 @@
-%%%
-ID printer
+ID 1intro
 Mode email
 Day 1
-From Rich
+Sender Kissinger Systems
+To AI
+%%
+[intro text]
+
+%%%
+ID 2printer_resp
+Mode email
+Day 1
+Sender Rich
 To John
 %%
 Hey-
@@ -11,17 +19,28 @@ You get your printer working yet?
 We probably won't have time between
 classes to make the handout.
 
-~rich
+-rich
 
 %%%
-ID printer_resp
+ID 3printer
 Mode email
 Response printer
 Day 1
-From John
+Sender John
 To Rich
 %%
-Working on it, still getting out the kinks in the new comp.
+Working on it, still getting out 
+the kinks in the new computer.
 P.S. Get your own printer
 P.P.S. [music "04 - Someone Great.mp3"]
+
+%%%
+ID 4end-of-scenes
+Mode email
+Day 1
+Sender AI
+To John
+%%
+-end of scenes-
+
 %%%

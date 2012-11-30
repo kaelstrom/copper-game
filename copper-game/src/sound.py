@@ -1,8 +1,3 @@
-'''
-Created on Oct 31, 2012
-
-@author: kaelstrom
-'''
 import pygame
 import game
 import os

@@ -1,9 +1,3 @@
-'''
-Created on Oct 7, 2012
-
-@author: kaelstrom
-'''
-
 import game
 import pygame
 import screen
@@ -27,7 +21,7 @@ class SwapLetter(node.Node):
         self.surf = game.font_tempesta.render(self.letter,1,(200,200,200))
         
     def draw(self):
-        game.screen.blit(self.surf, self.rect, plasma=True)
+        game.screen.blit(self.surf, self.rect, plasma=self.plasma)
         
 class LetterPair(node.Node):
     def __init__(self, lft, rht, rect, speed, delay, threshold):
@@ -76,14 +70,14 @@ class LetterPair(node.Node):
         else:
             self.getting_input = False
             
-        
         if not self.failure and not self.success and self.progress > .5 + self.threshold:
             self.failure = True
             r = random.choice(string.punctuation)
             self.parent.result_text += r
             self.lft.set_letter(r)
             self.rht.set_letter(r)
-            sound.play_sound('fail.ogg')
+            sound.play_sound('../sfx/fail.ogg')
+            self.set_all('plasma', False)
                 
     def draw_bg(self):
         #if self.active:
@@ -112,15 +106,7 @@ class LetterPair(node.Node):
         
 current_game = None
 class StringSwapGame(node.Node):
-    '''
-    classdocs
-    '''
-
-
     def __init__(self, start="", end="", cback=None, rect=pygame.Rect(100,300,800,400), speed=.0003, delay=.25, threshold = .07):
-        '''
-        Constructor
-        '''
         super(StringSwapGame, self).__init__()
         global current_game
         current_game = self
@@ -207,7 +193,7 @@ class StringSwapGame(node.Node):
                 self.swaplist[0].active = True
                 
     def play_chime(self):
-        sound.play_sound("chime" + str( min(11, 1 + self.success_count) ) + ".ogg")
+        sound.play_sound("../sfx/chime" + str( min(11, 1 + self.success_count) ) + ".ogg")
         
 if __name__ == '__main__':
     game.init()

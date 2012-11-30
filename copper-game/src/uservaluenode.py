@@ -1,8 +1,3 @@
-'''
-Created on Oct 30, 2012
-
-@author: kaelstrom
-'''
 import node
 import pygame
 import game
@@ -19,8 +14,8 @@ class UserValueNode(node.Node):
     def draw(self):
         game.screen.draw_outline(self.rect, color = (30,30,30), width=0)
         game.screen.draw_outline(self.rect)
-        if self.picture is not None:
-            game.screen.blit(self.picture, pygame.Rect(50,800,100,100))
+        if self.image is not None:
+            game.screen.blit(self.image, pygame.Rect(50,800,100,100))
         
         textcolor = (200,200,200)
         game.screen.draw_text("Spending : " + str(self.spending),  pygame.Rect(180,740, 120,40), game.font_tempesta, True, textcolor)
@@ -42,5 +37,5 @@ class UserValueNode(node.Node):
         
 def make_user(contact):
     tmp = UserValueNode()
-    tmp.picture = contact.picture
+    tmp.image = contact.image
     return tmp

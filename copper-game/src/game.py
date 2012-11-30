@@ -4,6 +4,9 @@ import pygame
 
 game = None
 screen = None
+scriptmanager = None
+active_node = None
+contacts = {}
 dt = 0
 time = 0
 font_arial = None

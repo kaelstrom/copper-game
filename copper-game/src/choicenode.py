@@ -1,9 +1,3 @@
-'''
-Created on Sep 30, 2012
-
-@author: kaelstrom
-'''
-
 import node
 import pygame
 import game
