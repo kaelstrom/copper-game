@@ -13,6 +13,7 @@ import cProfile
 import copy
 import scriptmanager
 import sound
+import commentgame
 
 class Game(object):
     def __init__(self):
@@ -31,8 +32,9 @@ class Game(object):
         self.teen = contactnode.make_teen()
         game.teen = self.teen
         
-        self.script = game.script = scriptmanager.ScriptManager("../res/script.txt", "../res/contacts.txt")
+        #self.script = game.script = scriptmanager.ScriptManager("../res/script.txt", "../res/contacts.txt")
         #game.active_node = emailnode.test_email()
+        game.active_node = commentgame.CommentGame()
         sound.play_music()
     
     def start(self):

@@ -40,6 +40,11 @@ class Screen(object):
         if plasma:
             self.colorize_surf(disp_surf, disp_rect)
         self.screen.blit(disp_surf,disp_rect)
+       
+    def draw_line(self, a, b, color=(30,30,240), width=1):
+        a_point = self.scale_rect(pygame.Rect(a, (0,0))).topleft
+        b_point = self.scale_rect(pygame.Rect(b, (0,0))).topleft
+        pygame.draw.line(self.screen, color, a_point, b_point, width)
         
     def get_text_rect(self, text="", font = None, color = (150,150,150), plasma=False):
         if font is None:
