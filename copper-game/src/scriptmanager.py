@@ -23,7 +23,7 @@ class ScriptManager(object):
         self.generate_nodes()
         game.contacts = self.contacts
         game.scenes = self.scenes
-        self.load_scene('1intro')
+        self.next_scene()
         
     def load_scene(self, scene):
         val = self.scenes[scene]
@@ -31,14 +31,17 @@ class ScriptManager(object):
         game.active_node = self.active_node = val
         
     def next_scene(self):
-        for key in sorted(self.scenes, key=self.scenes.get):
-            val = self.scenes[key]
+        sort = sorted(self.scenes, key=self.scenes.get)
+        sort = sorted([int(x) for x in sort])
+        for key in sort:
+            val = self.scenes[str(key)]
             if val.scene_viewed == False:
                 val.scene_viewed = True
                 game.active_node = self.active_node = val
                 return
         
     def parse_script_file(self, script_file):
+        count = 0
         blocks = open(script_file, 'r').read().split('%%%')
         for b in blocks:
             if len(b.split('%%')) == 2:
@@ -52,7 +55,9 @@ class ScriptManager(object):
                         if len(pair) > 1:
                             tmp.__dict__[pair[0].lower()] = ' '.join(pair[1:])
                             
-                self.scripts[tmp.id] = tmp
+                            
+                self.scripts[str(count) + tmp.id] = tmp
+                count+=1
           
         #for key, val in self.scripts.items():
         #    pprint(vars(val))

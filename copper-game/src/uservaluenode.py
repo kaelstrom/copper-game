@@ -18,9 +18,9 @@ class UserValueNode(node.Node):
             game.screen.blit(self.image, pygame.Rect(50,800,100,100))
         
         textcolor = (200,200,200)
-        game.screen.draw_text("Spending : " + str(self.spending),  pygame.Rect(180,740, 120,40), game.font_tempesta, True, textcolor)
-        game.screen.draw_text("Political: " + str(self.political),    pygame.Rect(180,810, 120,40), game.font_tempesta, True, textcolor)
-        game.screen.draw_text("Suspicion: " + str(self.suspicion),  pygame.Rect(180,880, 120,40), game.font_tempesta, True, textcolor)
+        game.screen.draw_text("Spending : " + str(self.spending),  pygame.Rect(180,740, 220,40), game.font_tempesta, True, textcolor)
+        game.screen.draw_text("Political: " + str(self.political),    pygame.Rect(180,810, 220,40), game.font_tempesta, True, textcolor)
+        game.screen.draw_text("Suspicion: " + str(self.suspicion),  pygame.Rect(180,880, 220,40), game.font_tempesta, True, textcolor)
         
         game.screen.draw_outline(pygame.Rect(180,775, 2*self.spending,30), color=(0,250,0), width=0)
         game.screen.draw_outline(pygame.Rect(180,845, 2*self.political,30), color=(0,0,250), width=0)

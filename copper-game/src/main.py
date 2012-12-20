@@ -12,6 +12,7 @@ import fx
 import cProfile
 import copy
 import scriptmanager
+import sound
 
 class Game(object):
     def __init__(self):
@@ -32,6 +33,7 @@ class Game(object):
         
         self.script = game.script = scriptmanager.ScriptManager("../res/script.txt", "../res/contacts.txt")
         #game.active_node = emailnode.test_email()
+        sound.play_music()
     
     def start(self):
         self.main_loop()

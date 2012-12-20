@@ -5,4 +5,6 @@ class Script(object):
         self.political=(0,0)
         self.suspicion=(0,0)
         self.sender='UNKNOWN_SENDER'
+        self.id = ''
+        self.mode = 'email'
         

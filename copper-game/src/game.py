@@ -17,5 +17,4 @@ teenvalue = None
 def init():
     global font_arial, font_tempesta
     pygame.init()
-    font_arial = pygame.font.SysFont("arial", 40)
-    font_tempesta = pygame.font.Font("../res/tempesta.ttf", 8)
+    font_arial = font_tempesta = pygame.font.Font("../res/tempesta.ttf", 8)

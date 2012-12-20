@@ -17,6 +17,8 @@ class EmailNode(node.Node):
             self.teenvalue = (uservaluenode.make_user(game.teen))
             game.teenvalue = self.teenvalue
         self.vals = vals
+        if self.vals is None:
+            self.vals = [[[0,0,0],[0,0,0]],[[0,0,0],[0,0,0]]]
         self.from_contact = None
         self.to_contact = None
         self.sender = None
@@ -34,12 +36,12 @@ class EmailNode(node.Node):
         if self.from_contact is not None:
             game.screen.draw_outline(from_rect.inflate(10,10), color, 2)
             game.screen.blit(self.from_contact.image, from_rect)
-            game.screen.draw_text('From: ' + self.from_contact.name, pygame.Rect(260, 60,0,0), scaling=False, plasma=False)
+            game.screen.draw_text('From: ' + self.from_contact.name, pygame.Rect(260, 60,700,64), scaling=True, plasma=False)
             game.screen.draw_outline(pygame.Rect(from_rect.inflate(10,10).right, 110, (to_rect.inflate(10,10).left-from_rect.inflate(10,10).right)-40, 1), color, 2)
         if self.to_contact is not None:
             game.screen.draw_outline(to_rect.inflate(10,10), color, 2)
             game.screen.blit(self.to_contact.image, to_rect)
-            game.screen.draw_text('To: ' + self.to_contact.name, pygame.Rect(300, 120,0,0), scaling=False, plasma=False)
+            game.screen.draw_text('To: ' + self.to_contact.name, pygame.Rect(300, 120,700,64), scaling=True, plasma=False)
             game.screen.draw_outline(pygame.Rect(from_rect.inflate(10,10).right+40, 170, (to_rect.inflate(10,10).left-from_rect.inflate(10,10).right)-40, 1), color, 2)
             
     def generate(self, text, rect):
@@ -66,19 +68,26 @@ class EmailNode(node.Node):
         #spacing = 1.0/len(self.lines)
         spacing = 60
         self.disp_rect = self.rect.inflate(1, spacing/rect.height)
+        self.disp_rect.height = 60
         self.children = []
         self.choicenodes = []
         c = 0
         for line in self.lines:
             if '{' not in line and '}' not in line:
-                self.add(textnode.TextNode(line, self.disp_rect.copy()))
+                tmp = textnode.TextNode(line, self.disp_rect.copy())
+                tmp.scaling=True
+                self.add(tmp)
                 self.disp_rect.move_ip(0,spacing)
             else:
                 lft = line.split('{')[0]
                 rht = line.split('{')[1].split('}')[1]
-                a,b = line.split('{')[1].split('}')[0].split('|')
+                try:
+                    a,b = line.split('{')[1].split('}')[0].split('|')
+                except:
+                    a,b = line.split('{')[1].split('}')[0], ''
                 line_edit = lft + ''.join(['  ' for i in range(max(len(a), len(b)) + 2)]) + rht
                 tmp = textnode.TextNode(line_edit, self.disp_rect.copy())
+                tmp.scaling=True
                 self.add(tmp)
                 choice_rect = self.disp_rect.copy()
                 choice_rect.width = 20 * max(len(a), len(b))
@@ -102,7 +111,6 @@ class EmailNode(node.Node):
 
 def test_email():
         tmp = EmailNode(
-            "From: investnews@consumerbuy.com\n" +
             "  Commercial property has been\n" +
             "  doing well for a while, and it\n" +
             "  appears the {residential|automotive}market \n" +

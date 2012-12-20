@@ -6,7 +6,7 @@ import math
 class Screen(object):
     def __init__(self):
         #self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
-        self.screen = pygame.display.set_mode((800,800))
+        self.screen = pygame.display.set_mode((600,600))
         self.res = self.screen.get_rect()
         self.default_font = game.font_arial
         self.dimmer = pygame.Surface(self.screen.get_size())
@@ -31,8 +31,12 @@ class Screen(object):
             disp_rect.height += shift
             disp_rect.x -= (shift/2)
             disp_rect.y -= (shift/2)
-        if scaling:
-            disp_surf = pygame.transform.scale(disp_surf, (disp_rect.width, disp_rect.height))
+            if scaling:
+                disp_surf = pygame.transform.scale(disp_surf, (disp_rect.width, disp_rect.height))
+        elif scaling:
+            #scale = min(disp_rect.width/disp_surf.get_rect().width, disp_rect.height/disp_surf.get_rect().height)
+            scale = disp_rect.height/disp_surf.get_rect().height
+            disp_surf = pygame.transform.scale(disp_surf, (disp_surf.get_rect().width*scale, disp_surf.get_rect().height*scale))
         if plasma:
             self.colorize_surf(disp_surf, disp_rect)
         self.screen.blit(disp_surf,disp_rect)
