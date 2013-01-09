@@ -1,7 +1,11 @@
+import pygame
+import game
+
 class Node(object):
     def __init__(self):
         self.children = []
         self.parent = None
+        self.rect = None
         self.plasma = False
         self.scaling = False
         self.scene_viewed = False
@@ -38,3 +42,15 @@ class Node(object):
             
     def input(self, events):
         pass
+        
+    def click_check(self, events):
+        if self.rect is None:
+            return False
+        for e in events:
+                if e.type == pygame.MOUSEBUTTONUP:
+                    if game.screen.scale_rect(self.rect).collidepoint(pygame.mouse.get_pos()):
+                        self.clicked_on()
+                        
+    def clicked_on(self):
+        pass
+        

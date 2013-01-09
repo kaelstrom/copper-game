@@ -6,20 +6,22 @@ import math
 class Screen(object):
     def __init__(self):
         #self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
-        self.screen = pygame.display.set_mode((600,600))
+        self.screen = pygame.display.set_mode((800,800))
         self.res = self.screen.get_rect()
         self.default_font = game.font_arial
         self.dimmer = pygame.Surface(self.screen.get_size())
         self.dimmer.fill((0,0,0))
         
-    def blit(self, surf, rect, plasma=False):
+    def blit(self, surf, rect, plasma=False, centered=False):
         disp_rect = self.scale_rect(rect)
         disp_surf = pygame.transform.scale(surf, (disp_rect.width, disp_rect.height))
         if plasma:
             self.colorize_surf(disp_surf, disp_rect)
+        if centered:
+            disp_rect.move_ip(-(disp_surf.get_rect().width - disp_rect.width)/2,0)
         self.screen.blit(disp_surf, disp_rect)
     
-    def draw_text(self, text="", rect=pygame.Rect(0,0,1000,1000), font = None, scaling = False, color = (150,150,150), plasma=False):
+    def draw_text(self, text="", rect=pygame.Rect(0,0,1000,1000), font = None, scaling = False, color = (150,150,150), plasma=False, centered=False):
         if font is None:
             font = self.default_font    
         disp_surf = font.render(text,1,color)
@@ -39,6 +41,8 @@ class Screen(object):
             disp_surf = pygame.transform.scale(disp_surf, (disp_surf.get_rect().width*scale, disp_surf.get_rect().height*scale))
         if plasma:
             self.colorize_surf(disp_surf, disp_rect)
+        if centered:
+            disp_rect.move_ip(-(disp_surf.get_rect().width - disp_rect.width)/2,0)
         self.screen.blit(disp_surf,disp_rect)
        
     def draw_line(self, a, b, color=(30,30,240), width=1):
