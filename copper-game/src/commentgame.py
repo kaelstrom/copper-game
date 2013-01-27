@@ -32,15 +32,15 @@ class Link(node.Node):
     def rotate_towards(self, pos):
         angle = math.degrees(math.atan2(pos[1] - self.rect.center[1], pos[0] - self.rect.center[0]))
         self.pointer = copy.copy(self.image)
-        pygame.draw.line(self.pointer, (255,0,0), self.pointer.get_rect().center, (16*math.cos(angle), 16*math.sin(angle)))
+        pygame.draw.line(self.pointer, (255,0,0), self.pointer.get_rect().center, (16*math.cos(angle), 16*math.sin(angle)), depth=6)
         #pygame.draw.arc(self.pointer, (255,0,0), pygame.Rect(0,0,32,32), angle - 10, angle + 10, 1)
         
     def draw(self):
-        game.screen.blit(self.pointer, self.rect)
+        game.screen.blit(self.pointer, self.rect, depth=7)
         
     def draw_path(self):
         for link in self.links:
-            game.screen.draw_line(self.rect.center, link.rect.center)
+            game.screen.draw_line(self.rect.center, link.rect.center, depth=6)
             
     def next_link(self, caller=None):
         if self.next_link_callback is not None:
@@ -48,7 +48,8 @@ class Link(node.Node):
         if len(self.links) == 0:
             return None
         else:
-            return self.links[self.active_link]
+            return random.choice(self.links)
+            #return self.links[self.active_link]
         
 def distance(a, b):
     return math.sqrt(math.pow(a[0]-b[0],2) + math.pow(a[1]-b[1], 2))
@@ -90,7 +91,7 @@ class Vote(node.Node):
         self.rect.center = (self.x,self.y)
             
     def draw(self):
-        game.screen.blit(self.image, self.rect)
+        game.screen.blit(self.image, self.rect, depth=8)
 
 
 class Comment(node.Node):
@@ -134,10 +135,10 @@ class Comment(node.Node):
         d.links.append(a)
         
     def draw(self):
-        game.screen.draw_outline(self.rect, width=1)
-        game.screen.draw_text(self.text, rect=self.rect, scaling=True, centered=True)
-        game.screen.draw_text('+' + str(self.upvotes), color=(170,255,170), rect=self.upvote_rect, scaling=True, centered=True)
-        game.screen.draw_text(str(self.downvotes), color=(255,170,170), rect=self.downvote_rect, scaling=True, centered=True)
+        game.screen.draw_outline(self.rect, width=1, depth=7)
+        game.screen.draw_text(self.text, rect=self.rect, scaling=True, centered=True, depth=8)
+        game.screen.draw_text('+' + str(self.upvotes), color=(170,255,170), rect=self.upvote_rect, scaling=True, centered=True, depth=8)
+        game.screen.draw_text(str(self.downvotes), color=(255,170,170), rect=self.downvote_rect, scaling=True, centered=True, depth=8)
 
 
 class CommentGame(node.Node):

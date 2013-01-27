@@ -29,7 +29,7 @@ class ContactNode(node.Node):
         game.screen.draw_text("          " + self.profile2, pygame.Rect(200,700, 600,50), game.font_tempesta, True,textcolor)
         
     def load_image(self, img):
-        print 'loading ../res/' + img
+        #print 'loading ../res/' + img
         self.image = pygame.image.load("../res/" + img)
         
 def make_teen():
@@ -38,5 +38,5 @@ def make_teen():
     tmp.age = "18"
     tmp.email = "user@gmail.com"
     tmp.phone = "555-1234"
-    tmp.image = pygame.image.load("../res/teen.png")
+    tmp.image = pygame.image.load("../res/john.png")
     return tmp

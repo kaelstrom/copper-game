@@ -75,10 +75,10 @@ class ChoiceNode(node.Node):
                 self.set_all('scaling', True)
                 child.draw_all()
                 textcolor = (200,200,200)
-                game.screen.draw_outline(pygame.Rect(drawrect.x+drawrect.width+20,drawrect.y+10, 240,40), (0,0,0),0)
-                game.screen.draw_outline(pygame.Rect(drawrect.x+drawrect.width+20,drawrect.y+10, 240,40))
+                game.screen.draw_outline(pygame.Rect(drawrect.x+drawrect.width+20,drawrect.y+10, 240,40), (0,0,0),0, depth=10)
+                game.screen.draw_outline(pygame.Rect(drawrect.x+drawrect.width+20,drawrect.y+10, 240,40), depth=10)
                 game.screen.draw_text("SPE +" + str(self.vals[c][0]) + ", POL +" + str(self.vals[c][1]) + ", SUS +" + str(self.vals[c][2]),  
-                                                    pygame.Rect(drawrect.x+drawrect.width+30,drawrect.y+10, 220,40), game.font_tempesta, True, textcolor, plasma=True)
+                                                    pygame.Rect(drawrect.x+drawrect.width+30,drawrect.y+10, 220,40), game.font_tempesta, True, textcolor, plasma=True, depth=10)
                 drawrect.move_ip(0,self.rect.height)
                 c+=1
         

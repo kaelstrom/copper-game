@@ -10,6 +10,7 @@ class UserValueNode(node.Node):
         self.spending = 15
         self.political = 40
         self.suspicion = 5
+        self.blurbs = []
         
     def draw(self):
         game.screen.draw_outline(self.rect, color = (30,30,30), width=0)
@@ -30,10 +31,19 @@ class UserValueNode(node.Node):
         game.screen.draw_outline(pygame.Rect(180,845, 200,30))
         game.screen.draw_outline(pygame.Rect(180,915, 200,30))
         
+        self.draw_blurbs()
+        
+    def draw_blurbs(self):
+        for blurb, i in enumerate(self.blurbs):
+            game.screen.draw_text(blurb, self.rect.move(0,i*50), centered=True)
+        
     def add(self, vals):
         self.spending += vals[0]
         self.political += vals[1]
         self.suspicion += vals[2]       
+        
+    def append_blurb(self, blurb):
+        self.blurbs.append(blurb)
         
 def make_user(contact):
     tmp = UserValueNode()

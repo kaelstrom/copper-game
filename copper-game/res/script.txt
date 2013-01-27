@@ -1,10 +1,29 @@
+%%%
+Mode cutscene
+ID intro
+
+%%%
 Mode email
 Day 1
 Sender Kissinger Systems
 To AI
 %%
-[AI awakens, told to observe]
+!#/ REQUEST LINK
+!#/ VERIFY b449e55c231ffb3c908fbc966eaa7c14
 
+Initial diagnostics have succeeded.
+You are to observe and confirm the subject.
+Take no further action.
+
+bal
+asdf
+agsd
+gdsf
+gfg
+fgf
+gg
+f
+f
 %%%
 Mode email
 Day 1
@@ -61,11 +80,21 @@ To AI
 [based on political issue]
 
 %%%
+Mode research
 
+
+%%%
+Sender Rich
+To John
 %%
 [friend jokes about girl 
  having a crush on the user]
 
+%%%
+Sender John
+To Allie
+%%
+[timid hello]
 %%%
 
 %%

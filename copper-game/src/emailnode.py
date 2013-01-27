@@ -6,6 +6,7 @@ import game
 import uservaluenode
 import continuenode
 import contactnode
+import scrollbox
 
 class EmailNode(node.Node):
     def __init__(self, text="", vals=None, rect=pygame.Rect(0,0,1000,1000)):
@@ -61,51 +62,10 @@ class EmailNode(node.Node):
             
         self.to_contact = game.contacts[self.to.lower()]
             
-        self.text = text
-        self.rect = rect.move(50,180)
-        self.rect.width = 900
-        self.lines = self.text.split('\n')
-        #spacing = 1.0/len(self.lines)
-        spacing = 60
-        self.disp_rect = self.rect.inflate(1, spacing/rect.height)
-        self.disp_rect.height = 60
-        self.children = []
-        self.choicenodes = []
-        c = 0
-        for line in self.lines:
-            if '{' not in line and '}' not in line:
-                tmp = textnode.TextNode(line, self.disp_rect.copy())
-                tmp.scaling=True
-                self.add(tmp)
-                self.disp_rect.move_ip(0,spacing)
-            else:
-                lft = line.split('{')[0]
-                rht = line.split('{')[1].split('}')[1]
-                try:
-                    a,b = line.split('{')[1].split('}')[0].split('|')
-                except:
-                    a,b = line.split('{')[1].split('}')[0], ''
-                line_edit = lft + ''.join(['  ' for i in range(max(len(a), len(b)) + 2)]) + rht
-                tmp = textnode.TextNode(line_edit, self.disp_rect.copy())
-                tmp.scaling=True
-                self.add(tmp)
-                choice_rect = self.disp_rect.copy()
-                choice_rect.width = 20 * max(len(a), len(b))
-                choice_rect.height = 60
-                #choice_rect.x = tmp.orig_rect.right
-                for i in lft:
-                   choice_rect.move_ip(20,0)
-                cnode = choicenode.ChoiceNode(a,b, vals=self.vals[c], rect=choice_rect.copy())
-                if len(a) <= 8:
-                    cnode.mode = 'hard'
-                if line != '\n':
-                    self.choicenodes.append(cnode)
-                c+=1
-                self.disp_rect.move_ip(0,spacing)
-                
-        self.choicenodes.reverse()
-        for c in self.choicenodes:
-            self.add(c)
+        tmp = scrollbox.ScrollBox()
+        tmp.generate(self.text, self.vals, pygame.Rect(50,230,900,460))
+        
+        self.add(tmp)
         self.add(continuenode.ContinueNode())
         self.add(game.teenvalue)
 

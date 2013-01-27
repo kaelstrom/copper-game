@@ -19,7 +19,7 @@ class ContinueNode(node.Node):
     def draw(self):
         game.screen.draw_outline(self.rect, (20,20,20),0)
         game.screen.draw_outline(self.rect, (150,150,150))
-        game.screen.draw_text("CONTINUE", self.rect.move(25,0), scaling=True, plasma=False)
+        game.screen.draw_text("CONTINUE", self.rect, scaling=True, plasma=False, centered=True)
                         
     def next_scene(self):
         game.scriptmanager.next_scene()

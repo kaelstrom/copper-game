@@ -9,6 +9,7 @@ class Node(object):
         self.plasma = False
         self.scaling = False
         self.scene_viewed = False
+        self.depth = 0
     
     def add(self, n):
         n.parent = self

@@ -3,11 +3,11 @@ import textnode
 import pygame
 
 class StringNode(node.Node):
-    def __init__(self, text, rect=pygame.Rect(0,0,1000,1000)):
+    def __init__(self, text, rect=pygame.Rect(0,0,1000,1000), scrollbox=False):
         super(StringNode, self).__init__()
         self.text = text
         self.rect = rect
-        
+        self.scrollbox = scrollbox
         self.set_rect(self.rect)
         
     def set_rect(self, rect):

@@ -81,13 +81,13 @@ class ScriptManager(object):
         #   pprint(vars(val))
         self.contacts['unknown'] = contactnode.ContactNode()
         game.teen = self.contacts['john']
-        print game.teen
+        #print game.teen
         game.teenvalue = uservaluenode.make_user(game.teen)
-        print game.teenvalue
+        #print game.teenvalue
         game.contacts = self.contacts
             
     def generate_nodes(self):
         for key, val in self.scripts.items():
             if val.mode == 'email':
-                print vars(val)
+                #print vars(val)
                 self.scenes[key] = emailnode.from_script(val)

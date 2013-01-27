@@ -11,7 +11,7 @@ class TextNode(node.Node):
         
         
     def draw(self):
-        game.screen.draw_text(self.text, self.rect, scaling=self.scaling, plasma = self.plasma)
+        game.screen.draw_text(self.text, self.rect, scaling=self.scaling, plasma = self.plasma, depth = self.depth)
         #game.screen.draw_outline(self.orig_rect.move(self.rect.x, self.rect.y))
         
         

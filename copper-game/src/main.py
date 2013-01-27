@@ -32,9 +32,9 @@ class Game(object):
         self.teen = contactnode.make_teen()
         game.teen = self.teen
         
-        #self.script = game.script = scriptmanager.ScriptManager("../res/script.txt", "../res/contacts.txt")
+        self.script = game.script = scriptmanager.ScriptManager("../res/script.txt", "../res/contacts.txt")
         #game.active_node = emailnode.test_email()
-        game.active_node = commentgame.CommentGame()
+        #game.active_node = commentgame.CommentGame()
         sound.play_music()
     
     def start(self):
@@ -53,12 +53,15 @@ class Game(object):
     def input(self):
         events = pygame.event.get() 
         for event in events:
+            if event.type == pygame.VIDEORESIZE:
+                game.screen.resize(event.size)
             if event.type == pygame.QUIT:
                 self.running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    self.scene_num = (self.scene_num + 1) % len(self.scenes)
-                    self.active_node = self.scenes[self.scene_num]
+                    pass
+                    #self.scene_num = (self.scene_num + 1) % len(self.scenes)
+                    #self.active_node = self.scenes[self.scene_num]
                 if event.key == pygame.K_RIGHT:
                     self.fade_to_scene(emailnode.test_email())
                 if event.key == pygame.K_ESCAPE:
@@ -75,6 +78,7 @@ class Game(object):
         if self.ldraw is not None:
             self.ldraw()
             self.ldraw = None
+        self.screen.expel_draw_queue()
         pygame.display.flip()
         
     def fade_to_scene(self, scene):

@@ -4,10 +4,15 @@ blurb Tomorrow's Solutions, Today.
 image ks.png
 %%%
 name John
-image teen.png
+image john.png
 blurb high school senior, emotionally naive, child of congressional candidate
 %%%
 name AI
 image ai.png
 blurb Prototype UI
 %%%
+name Allie
+image allie.png
+%%%
+name Rich
+image rich.png
