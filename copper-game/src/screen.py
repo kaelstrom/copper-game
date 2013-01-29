@@ -17,7 +17,6 @@ class Screen(object):
         self.depth_offset = 0
         self.depth_inc = .00001
         
-        
     def blit(self, surf, rect, plasma=False, centered=False, depth=0):
         args = (surf.copy(), rect.copy(), plasma, centered)
         self.queue_draw(self.blit_real, args, depth)
@@ -70,7 +69,15 @@ class Screen(object):
             disp_rect.move_ip(-(disp_surf.get_rect().width - disp_rect.width)/2,0)
         self.screen.blit(disp_surf,disp_rect)
        
-    def draw_line(self, a, b, color=(30,30,240), width=1):
+    def draw_line(self, a, b, color=(30,30,240), width=1, depth=0):
+        args = (a,b,color,width)
+        self.queue_draw(self.draw_line_real, args, depth)
+        
+    def draw_line_real(self, args):
+        a=args[0]
+        b=args[1]
+        color=args[2]
+        width=args[3]
         a_point = self.scale_rect(pygame.Rect(a, (0,0))).topleft
         b_point = self.scale_rect(pygame.Rect(b, (0,0))).topleft
         pygame.draw.line(self.screen, color, a_point, b_point, width)

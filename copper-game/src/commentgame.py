@@ -19,8 +19,17 @@ class Link(node.Node):
         self.links = []
         self.active_link = 0
         self.next_link_callback = None
+        self.degrade = 1
+        self.interactive = False
+        self.pulse = 0
+        self.pulse_inc = 0
+        self.pulse_rate = .01
+        self.pulse_height = 4.0
+        self.degrade_rate = .0003
+        self.seed = random.uniform(0.0, 100.0)
         
     def advance_link(self):
+        self.degrade = 1.5 + random.uniform(0.0, 0.5)
         if len(self.links) == 0:
             return
         self.active_link = (self.active_link + 1) % len(self.links)
@@ -32,15 +41,32 @@ class Link(node.Node):
     def rotate_towards(self, pos):
         angle = math.degrees(math.atan2(pos[1] - self.rect.center[1], pos[0] - self.rect.center[0]))
         self.pointer = copy.copy(self.image)
-        pygame.draw.line(self.pointer, (255,0,0), self.pointer.get_rect().center, (16*math.cos(angle), 16*math.sin(angle)), depth=6)
+        #pygame.draw.line(self.pointer, (255,0,0), self.pointer.get_rect().center, (16*math.cos(angle), 16*math.sin(angle)), depth=6)
         #pygame.draw.arc(self.pointer, (255,0,0), pygame.Rect(0,0,32,32), angle - 10, angle + 10, 1)
         
     def draw(self):
-        game.screen.blit(self.pointer, self.rect, depth=7)
+        if self.interactive:
+            game.screen.blit(self.pointer, self.rect.inflate(4+self.pulse, 4+self.pulse), depth=9)
+        else:
+            game.screen.blit(self.pointer, self.rect, depth=9)
+        
+    def act(self):
+        self.pulse_inc += self.pulse_rate * game.dt
+        self.pulse = self.pulse_height * math.sin(self.pulse_inc+self.seed)
+        if self.interactive:
+            self.degrade -= self.degrade_rate *random.uniform(0.0,1.0) * game.dt
+            if self.degrade <= 0:
+                self.advance_link()
         
     def draw_path(self):
-        for link in self.links:
-            game.screen.draw_line(self.rect.center, link.rect.center, depth=6)
+        if self.interactive:
+            for link in self.links:
+                game.screen.draw_line(self.rect.center, link.rect.center, color=(0,0,20), depth=6)
+            game.screen.draw_line(self.rect.center, self.links[self.active_link].rect.center, color=(0,0,min(255, 20+230*self.degrade)), depth=7)
+        else:
+            for link in self.links:
+                game.screen.draw_line(self.rect.center, link.rect.center, color=(0,0,255), depth=6)
+            
             
     def next_link(self, caller=None):
         if self.next_link_callback is not None:
@@ -48,8 +74,10 @@ class Link(node.Node):
         if len(self.links) == 0:
             return None
         else:
-            return random.choice(self.links)
-            #return self.links[self.active_link]
+            if self.interactive:
+                return self.links[self.active_link]
+            else:
+                return random.choice(self.links)
         
 def distance(a, b):
     return math.sqrt(math.pow(a[0]-b[0],2) + math.pow(a[1]-b[1], 2))
@@ -98,7 +126,7 @@ class Comment(node.Node):
     def __init__(self, text, index, rect=pygame.Rect(0,0,100,100)):
         self.rect = rect.copy()
         tmp_rect = pygame.Rect(0,0,16,16)
-        tmp_rect.center = (self.rect.x, self.rect.center[1])
+        tmp_rect.center = (self.rect.right, self.rect.center[1])
         self.link = Link(rect=tmp_rect.copy())
         
         self.link.next_link_callback = self.add_vote
@@ -128,7 +156,7 @@ class Comment(node.Node):
         c = Link(rect=r.copy())
         r.center = self.rect.topleft
         d = Link(rect=r.copy())
-        self.link.links.append(a)
+        self.link.links.append(c)
         a.links.append(b)
         b.links.append(c)
         c.links.append(d)
@@ -142,45 +170,103 @@ class Comment(node.Node):
 
 
 class CommentGame(node.Node):
-    def __init__(self):
+    def __init__(self, mode="game"):
         super(CommentGame, self).__init__()
         self.links = []
         self.votes = []
         self.wave_val = 1
-        self.wave_cooldown = self.wave_clock = 5000
+        self.wave_cooldown = self.wave_clock = 7000
         self.wave_range = (25,50)
-        self.generate()
+        self.mode = mode
+        if self.mode == "game":
+            self.generate()
+        elif self.mode == "title":
+            self.create_title()
+            
+    def create_title(self):
+        disp_height = 950
+        tmp_rect = pygame.Rect(0,0,16,16)
+        tmp_rect.center = (0,disp_height)
+        tmp = Link(rect = tmp_rect.copy())
+        self.links.append(tmp)
+        
+        tmp_rect.center = (1000,disp_height)
+        tmp = Link(rect = tmp_rect.copy())
+        self.links.append(tmp)
+        
+        tmp_rect.center = (1050,disp_height)
+        tmp = Link(rect = tmp_rect.copy())
+        self.links.append(tmp)
+        
+        tmp_rect.center = (1050,1050)
+        tmp = Link(rect = tmp_rect.copy())
+        self.links.append(tmp)
+        
+        tmp_rect.center = (-50,1050)
+        tmp = Link(rect = tmp_rect.copy())
+        self.links.append(tmp)
+        
+        tmp_rect.center = (-50,disp_height)
+        tmp = Link(rect = tmp_rect.copy())
+        self.links.append(tmp)
+        
+        for i in range(len(self.links)-1):
+            self.links[i].links.append(self.links[i+1])
+            
+        self.links[-1].links.append(self.links[0])
+        
+        for i in range(40):
+            self.create_vote()
+            self.votes[-1].y = 800
+            self.votes[-1].x = random.uniform(-4000,-100)
+        
         
     def generate(self, com1="Comment 1", com2="Comment 2", com3="Comment 3"):
         self.com1 = Comment(com1, 1, rect=pygame.Rect(100,600,800,90))
         self.com2 = Comment(com2, 2, rect=pygame.Rect(100,700,800,90))
         self.com3 = Comment(com3, 3, rect=pygame.Rect(100,800,800,90))
+        self.switch_bg_rect = pygame.Rect(75,275, 850, 250)
         self.create_links_v1()
         self.create_votes()
     
+    def slink(self, child, index):
+        if index >= 0 and index < len(self.links):
+            self.links[index].links.append(child)
     
     def create_links_v1(self):
-        length = 8
-        for i in range(length):
+        length = 2
+        for i in range(length+1):
             tmp_rect = pygame.Rect(0,0,16,16)
-            tmp_rect.center = (i*(800/length)+150, 0*50+400)
+            tmp_rect.center = (i*(800/length)+100+32*0, 0*100+300)
             tmp = Link(rect = tmp_rect.copy())
-            self.links.append(tmp)
-        
-            tmp_rect = pygame.Rect(0,0,16,16)
-            tmp_rect.center = (i*(800/length)+150, 1*50+400)
-            tmp = Link(rect = tmp_rect.copy())
-            self.links.append(tmp)
-        
-            tmp_rect = pygame.Rect(0,0,16,16)
-            tmp_rect.center = (i*(800/length)+150, 2*50+400)
-            tmp = Link(rect = tmp_rect.copy())
+            self.slink(tmp, i*3-1)
+            self.slink(tmp, i*3-2)
+            self.slink(tmp, i*3-3)
             self.links.append(tmp)
             
+            tmp_rect = pygame.Rect(0,0,16,16)
+            tmp_rect.center = (i*(800/length)+100+32*0, 1*100+300)
+            tmp = Link(rect = tmp_rect.copy())
+            self.slink(tmp, i*3-1)
+            self.slink(tmp, i*3-2)
+            self.slink(tmp, i*3-3)
+            self.links.append(tmp)
+        
+            tmp_rect = pygame.Rect(0,0,16,16)
+            tmp_rect.center = (i*(800/length)+100+32*0, 2*100+300)
+            tmp = Link(rect = tmp_rect.copy())
+            self.slink(tmp, i*3-1)
+            self.slink(tmp, i*3-2)
+            self.slink(tmp, i*3-3)
+            self.links.append(tmp)
+            
+        #for i in range(len(self.links)-3):
+        #    for j in (3,4,5):
+        #        if i + j < len(self.links):
+        #            self.links[i].links.append(self.links[i+j])
+            
         for i in range(len(self.links)-3):
-            self.links[i].links.append(self.links[i+1])
-            self.links[i].links.append(self.links[i+2])
-            self.links[i].links.append(self.links[i+3])
+            self.links[i].interactive = True
             
         for link in self.links:
             for i in range(random.randint(2,4)):
@@ -190,34 +276,64 @@ class CommentGame(node.Node):
         b = self.links[-2]
         c = self.links[-1]
             
-        self.join_links(a, self.com1.link, 32)
+        self.join_links(c, self.com1.link, 16)
         self.join_links(b, self.com2.link, 24)
-        self.join_links(c, self.com3.link, 16)
+        self.join_links(a, self.com3.link, 32)
+        
+        tmp_rect = pygame.Rect(0,0,16,16)
+        tmp_rect.center = (50, 400)
+        tmp = Link(rect = tmp_rect.copy())
+        tmp.interactive = False
+        tmp.links.append(self.links[0])
+        tmp.links.append(self.links[1])
+        tmp.links.append(self.links[2])
+        self.links.append(tmp)
+        
+        tmp_rect = pygame.Rect(0,0,16,16)
+        tmp_rect.center = (24, 400)
+        tmp = Link(rect = tmp_rect.copy())
+        tmp.interactive = False
+        tmp.links.append(self.links[-1])
+        self.links.append(tmp)
+        
+        tmp_rect = pygame.Rect(0,0,16,16)
+        tmp_rect.center = (24, -50)
+        tmp = Link(rect = tmp_rect.copy())
+        tmp.interactive = False
+        tmp.links.append(self.links[-1])
+        self.links.append(tmp)
         
     def join_links(self, a, b, x):
         tmp_rect = pygame.Rect(0,0,16,16)
         tmp_rect.center = a.rect.center
-        tmp_rect.move_ip(x+b.rect.center[0]/2,0)
+        tmp_rect.move_ip(x*2+a.rect.width/2,0)
         topright = Link(rect = tmp_rect.copy())
         self.links.append(topright)
         a.links.append(topright)
         
-        tmp_rect.move_ip(0, x*8-96)
-        right = Link(rect=tmp_rect.copy())
-        self.links.append(right)
-        topright.links.append(right)
-        
-        tmp_rect.move_ip(-a.rect.center[0], 0)
-        left = Link(rect=tmp_rect.copy())
-        self.links.append(left)
-        right.links.append(left)
-        
         tmp_rect.center = (tmp_rect.center[0], b.rect.center[1])
-        bottomleft = Link(rect=tmp_rect.copy())
-        self.links.append(bottomleft)
-        left.links.append(bottomleft)
+        bottomright = Link(rect=tmp_rect.copy())
+        self.links.append(bottomright)
+        topright.links.append(bottomright)
         
-        bottomleft.links.append(b)
+        bottomright.links.append(b)
+        
+        #tmp_rect.move_ip(0, x*8-96)
+        #right = Link(rect=tmp_rect.copy())
+        #self.links.append(right)
+        #topright.links.append(right)
+        
+        #tmp_rect.move_ip(-a.rect.center[0], 0)
+        #left = Link(rect=tmp_rect.copy())
+        #self.links.append(left)
+        #right.links.append(left)
+        
+        #tmp_rect.center = (tmp_rect.center[0], b.rect.center[1])
+        #bottomleft = Link(rect=tmp_rect.copy())
+        #self.links.append(bottomleft)
+        #left.links.append(bottomleft)
+        
+        #bottomleft.links.append(b)
         
     def create_links_random(self):
         length = 10
@@ -236,21 +352,25 @@ class CommentGame(node.Node):
             
         self.links[len(self.links)-1].links.append(self.links[0])
             
-    def create_votes(self, amount=100, value=1):
+    def create_votes(self, amount=50, value=1):
         for i in range(amount):
             self.create_vote(value)
     
     def create_vote(self, value=1):
-        tmp_rect = pygame.Rect(0,0,10,10)
+        tmp_rect = pygame.Rect(-50,-50,10,10)
         tmp = Vote(rect=tmp_rect,val=value)
-        tmp.velocity = random.uniform(2.0,4.0)
-        tmp.target = self.links[0]
+        tmp.velocity = random.uniform(2.0,2.5)
+        tmp.target = self.links[-1]
         self.votes.append(tmp)
     
     def act(self):
-        self.wave_spawner()
+        if self.mode == 'game':
+            self.wave_spawner()
         for vote in self.votes:
             vote.act()
+            
+        for link in self.links:
+            link.act()
     
     def wave_spawner(self):
         self.wave_clock -= game.dt
@@ -260,9 +380,11 @@ class CommentGame(node.Node):
             self.create_votes(random.randint(self.wave_range[0], self.wave_range[1]), self.wave_val)
     
     def draw(self):
-        self.com3.draw()
-        self.com2.draw()
-        self.com1.draw()
+        if self.mode == 'game':
+            self.com3.draw()
+            self.com2.draw()
+            self.com1.draw()
+            game.screen.draw_outline(self.switch_bg_rect, depth=3)
         for link in self.links:
             link.draw_path()
         for link in self.links:
@@ -271,8 +393,9 @@ class CommentGame(node.Node):
             vote.draw()
             
     def input(self, events):
-        for s in self.links:
-            s.click_check(events)
+        if self.mode != 'title':
+            for s in self.links:
+                s.click_check(events)
         for e in events:
             if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE and self.paused:
                 pass
