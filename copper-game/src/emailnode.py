@@ -8,6 +8,7 @@ import continuenode
 import contactnode
 import scrollbox
 import helpnode
+import json
 
 class EmailNode(node.Node):
     def __init__(self, text="", vals=None, rect=pygame.Rect(0,0,1000,1000)):
@@ -64,7 +65,6 @@ class EmailNode(node.Node):
             
         self.to_contact = game.contacts[self.to.lower()]
         self.vals = [self.swap1vals, self.swap2vals]
-        print self.vals
         tmp = scrollbox.ScrollBox()
         tmp.parent = self
         tmp.generate(self.text, self.vals, pygame.Rect(50,230,900,460))
@@ -88,7 +88,12 @@ def test_email():
 def from_script(script):
     tmp = EmailNode()
     for pair in vars(script).items():
-        tmp.__dict__[pair[0]] = pair[1]
+        if (pair[0] == 'swap1vals' or pair[0] == 'swap2vals') and not type(pair[1]) == list:
+            print pair
+            result = json.loads(pair[1])
+            tmp.__dict__[pair[0]] = result
+        else:
+            tmp.__dict__[pair[0]] = pair[1]
     tmp.generate(tmp.text, tmp.rect)
     return tmp
     
