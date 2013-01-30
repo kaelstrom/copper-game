@@ -8,6 +8,8 @@ class Screen(object):
     def __init__(self):
         #self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
         self.size = 800, 800
+        pygame.display.set_icon(pygame.image.load("../res/icon.png"))
+        pygame.display.set_caption('copper')
         self.screen = pygame.display.set_mode(self.size, pygame.RESIZABLE)
         self.res = self.screen.get_rect()
         self.default_font = game.font_arial

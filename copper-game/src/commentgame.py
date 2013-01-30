@@ -5,6 +5,7 @@ import screen
 import random
 import math
 import copy
+import continuenode
 
 class Link(node.Node):
     def __init__(self, mode="basic", rect=pygame.Rect(0,0,16,16)):
@@ -34,9 +35,15 @@ class Link(node.Node):
             return
         self.active_link = (self.active_link + 1) % len(self.links)
         self.rotate_towards(self.links[self.active_link].rect.center)
+      
+    def input(self, events):
+        for e in events:
+                if e.type == pygame.MOUSEBUTTONUP:
+                    if game.screen.scale_rect(self.rect.inflate(32,32)).collidepoint(pygame.mouse.get_pos()):
+                        self.advance_link()
         
-    def clicked_on(self):
-        self.advance_link()
+    #def clicked_on(self):
+    #    self.advance_link()
         
     def rotate_towards(self, pos):
         angle = math.degrees(math.atan2(pos[1] - self.rect.center[1], pos[0] - self.rect.center[0]))
@@ -123,7 +130,7 @@ class Vote(node.Node):
 
 
 class Comment(node.Node):
-    def __init__(self, text, index, rect=pygame.Rect(0,0,100,100)):
+    def __init__(self, text, index=-1, rect=pygame.Rect(0,0,100,100),mode="comment"):
         self.rect = rect.copy()
         tmp_rect = pygame.Rect(0,0,16,16)
         tmp_rect.center = (self.rect.right, self.rect.center[1])
@@ -131,12 +138,18 @@ class Comment(node.Node):
         
         self.link.next_link_callback = self.add_vote
         
+        self.mode = mode
         self.text = text
         self.index = index
         self.upvotes = 0
         self.downvotes = 0
         self.upvote_rect =     pygame.Rect(self.rect.x + self.rect.height*.5, self.rect.y, self.rect.height, self.rect.height)
         self.downvote_rect = pygame.Rect(self.rect.right - self.rect.height*1.5, self.rect.y, self.rect.height, self.rect.height)
+        self.text_rect_a = pygame.Rect(self.upvote_rect.right, self.rect.y, self.downvote_rect.left - self.upvote_rect.right,self.rect.height/2)
+        self.text_rect_b = self.text_rect_a.move(0,self.text_rect_a.height)
+        index = self.text.find(' ', len(self.text)/2)
+        self.text_a = self.text[:index]
+        self.text_b = self.text[index:]
         self.create_link_cycle()
         
     def add_vote(self, v):
@@ -164,17 +177,22 @@ class Comment(node.Node):
         
     def draw(self):
         game.screen.draw_outline(self.rect, width=1, depth=7)
-        game.screen.draw_text(self.text, rect=self.rect, scaling=True, centered=True, depth=8)
-        game.screen.draw_text('+' + str(self.upvotes), color=(170,255,170), rect=self.upvote_rect, scaling=True, centered=True, depth=8)
-        game.screen.draw_text(str(self.downvotes), color=(255,170,170), rect=self.downvote_rect, scaling=True, centered=True, depth=8)
+        game.screen.draw_text(self.text_a, rect=self.text_rect_a, scaling=True, centered=True, depth=8)
+        game.screen.draw_text(self.text_b, rect=self.text_rect_b, scaling=True, centered=True, depth=8)
+        if self.mode == "comment":
+            game.screen.draw_text('+' + str(self.upvotes), color=(170,255,170), rect=self.upvote_rect, scaling=True, centered=True, depth=8)
+            game.screen.draw_text(str(self.downvotes), color=(255,170,170), rect=self.downvote_rect, scaling=True, centered=True, depth=8)
 
 
 class CommentGame(node.Node):
     def __init__(self, mode="game"):
         super(CommentGame, self).__init__()
+        self.scene_viewed = False
         self.links = []
         self.votes = []
         self.wave_val = 1
+        self.waves = 10
+        self.waves_active = False
         self.wave_cooldown = self.wave_clock = 7000
         self.wave_range = (25,50)
         self.mode = mode
@@ -221,13 +239,25 @@ class CommentGame(node.Node):
             self.votes[-1].x = random.uniform(-4000,-100)
         
         
-    def generate(self, com1="Comment 1", com2="Comment 2", com3="Comment 3"):
+    def generate(self, art="Article", com1="Comment 1", com1r=(0,0,0,"art1 - com1 chosen"),
+                                                        com2="Comment 2", com2r=(0,0,0,"art1 - com2 chosen"),
+                                                        com3="Comment 3", com3r=(0,0,0,"art1 - com3 chosen")):
+        self.links = []
+        self.votes = []
+        self.waves_rect = pygame.Rect(10, 10, 100,100)
+        self.begin_button = continuenode.ContinueNode("BEGIN", 
+                                                                                rect=pygame.Rect(100, 10, 200, 80),
+                                                                                callback=self.begin_waves)
+        self.article =Comment(art,         rect=pygame.Rect(100,100,800,90),mode='article')
         self.com1 = Comment(com1, 1, rect=pygame.Rect(100,600,800,90))
         self.com2 = Comment(com2, 2, rect=pygame.Rect(100,700,800,90))
         self.com3 = Comment(com3, 3, rect=pygame.Rect(100,800,800,90))
+        self.header_article =         pygame.Rect(410,60,180,40)
+        self.header_switchboard = pygame.Rect(410,235,180,40)
+        self.header_comment =     pygame.Rect(410,560,180,40)
         self.switch_bg_rect = pygame.Rect(75,275, 850, 250)
         self.create_links_v1()
-        self.create_votes()
+        #self.create_votes()
     
     def slink(self, child, index):
         if index >= 0 and index < len(self.links):
@@ -297,7 +327,7 @@ class CommentGame(node.Node):
         self.links.append(tmp)
         
         tmp_rect = pygame.Rect(0,0,16,16)
-        tmp_rect.center = (24, -50)
+        tmp_rect.center = (24, -10)
         tmp = Link(rect = tmp_rect.copy())
         tmp.interactive = False
         tmp.links.append(self.links[-1])
@@ -357,7 +387,7 @@ class CommentGame(node.Node):
             self.create_vote(value)
     
     def create_vote(self, value=1):
-        tmp_rect = pygame.Rect(-50,-50,10,10)
+        tmp_rect = pygame.Rect(self.links[-1].rect.x,self.links[-1].rect.y,10,10)
         tmp = Vote(rect=tmp_rect,val=value)
         tmp.velocity = random.uniform(2.0,2.5)
         tmp.target = self.links[-1]
@@ -366,25 +396,48 @@ class CommentGame(node.Node):
     def act(self):
         if self.mode == 'game':
             self.wave_spawner()
+            self.begin_button.act()
         for vote in self.votes:
             vote.act()
             
         for link in self.links:
             link.act()
     
+    def begin_waves(self):
+        self.waves_active = True
+        self.wave_clock = 0
+    
     def wave_spawner(self):
-        self.wave_clock -= game.dt
-        if self.wave_clock <= 0:
-            self.wave_clock = self.wave_cooldown + random.randint(0,500)*.001
-            self.wave_val *= -1
-            self.create_votes(random.randint(self.wave_range[0], self.wave_range[1]), self.wave_val)
+        if self.waves == 0:
+            self.waves_active = False
+        if self.waves_active:
+            self.wave_clock -= game.dt
+            if self.wave_clock <= 0:
+                self.waves -= 1
+                self.wave_clock = self.wave_cooldown + random.randint(0,500)*.001
+                self.wave_val *= -1
+                self.create_votes(random.randint(self.wave_range[0], self.wave_range[1]), self.wave_val)
     
     def draw(self):
         if self.mode == 'game':
             self.com3.draw()
             self.com2.draw()
             self.com1.draw()
+            self.article.draw()
+            self.begin_button.draw()
+            #game.screen.draw_outline(self.waves_rect, depth=3)
+            game.screen.draw_text(str(self.waves), color=(255,255,255), rect=self.waves_rect, scaling=True, centered=True, depth=8)
+            game.screen.draw_text('waves', color=(255,255,255), 
+                                                rect=pygame.Rect(self.waves_rect.x, self.waves_rect.y, self.waves_rect.width, self.waves_rect.height/4), 
+                                                scaling=True, centered=True, depth=8)
             game.screen.draw_outline(self.switch_bg_rect, depth=3)
+            game.screen.draw_outline(self.header_article, width=1, depth = 4)
+            game.screen.draw_outline(self.header_switchboard, width=1, depth = 4)
+            game.screen.draw_outline(self.header_comment, width=1, depth = 4)
+            game.screen.draw_text("Headline", rect=self.header_article, scaling=True, centered=True, depth=5)
+            game.screen.draw_text("Switchboard", rect=self.header_switchboard, scaling=True, centered=True, depth=5)
+            game.screen.draw_text("Comments", rect=self.header_comment, scaling=True, centered=True, depth=5)
+        
         for link in self.links:
             link.draw_path()
         for link in self.links:
@@ -394,13 +447,21 @@ class CommentGame(node.Node):
             
     def input(self, events):
         if self.mode != 'title':
+            self.begin_button.input(events)
             for s in self.links:
-                s.click_check(events)
+                s.input(events)
         for e in events:
             if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE and self.paused:
                 pass
         
         
+def from_script(val):
+    result = CommentGame()
+    result.generate(val.article, val.comment1, val.comment1result,
+                                            val.comment2, val.comment2result,
+                                            val.comment3, val.comment3result)
+    return result
+    
 if __name__ == '__main__':
     game.init()
     game.screen = screen.Screen()

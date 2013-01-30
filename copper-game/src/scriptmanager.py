@@ -2,12 +2,15 @@ import choicenode
 import contactnode
 import stringswapgame
 import pygame
+import screen
 import stringnode
 import emailnode
 import node
 import game
 import script
 import uservaluenode
+import commentgame
+import title
 from pprint import pprint
 
 class ScriptManager(object):
@@ -33,6 +36,7 @@ class ScriptManager(object):
     def next_scene(self):
         sort = sorted(self.scenes, key=self.scenes.get)
         sort = sorted([int(x) for x in sort])
+        #pprint(sort)
         for key in sort:
             val = self.scenes[str(key)]
             if val.scene_viewed == False:
@@ -41,7 +45,7 @@ class ScriptManager(object):
                 return
         
     def parse_script_file(self, script_file):
-        count = 0
+        count = 1
         blocks = open(script_file, 'r').read().split('%%%')
         for b in blocks:
             if len(b.split('%%')) == 2:
@@ -87,7 +91,13 @@ class ScriptManager(object):
         game.contacts = self.contacts
             
     def generate_nodes(self):
+        self.scenes['0'] = title.Title()
         for key, val in self.scripts.items():
+            print val.mode
             if val.mode == 'email':
                 #print vars(val)
                 self.scenes[key] = emailnode.from_script(val)
+            if val.mode == 'research':
+                self.scenes[key] = commentgame.from_script(val)
+                
+        #pprint(self.scenes)

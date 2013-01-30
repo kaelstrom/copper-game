@@ -66,7 +66,7 @@ class EmailNode(node.Node):
         tmp.generate(self.text, self.vals, pygame.Rect(50,230,900,460))
         
         self.add(tmp)
-        self.add(continuenode.ContinueNode())
+        self.add(continuenode.ContinueNode(rect=pygame.Rect(600,800,240,60)))
         self.add(game.teenvalue)
 
 def test_email():

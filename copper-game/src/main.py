@@ -35,8 +35,8 @@ class Game(object):
         
         self.script = game.script = scriptmanager.ScriptManager("../res/script.txt", "../res/contacts.txt")
         #game.active_node = emailnode.test_email()
-        game.active_node = commentgame.CommentGame()
-        game.active_node = title.Title()
+        #game.active_node = commentgame.CommentGame()
+        #game.active_node = title.Title()
         sound.play_music()
     
     def start(self):

@@ -1,7 +1,13 @@
 %%%
-Mode cutscene
-ID intro
-
+Mode research
+Article Visa and Mastercard block donations to Wikileaks following the leak of confidential US diplomatic communications.
+Comment1 I can donate to the KKK but not a human rights organization?
+Comment1Result (0,5,0,"Individual Rights and Transparency")
+Comment2 Visa's a private company, they're free to do business with who they choose.
+Comment2Result (3,-2,0,"Corporate Rights")
+Comment3 Every confidential leak puts U.S. relations and lives at risk. 
+Comment3Result (0,-4,0,"Government and Defense")
+%%
 %%%
 Mode email
 Day 1

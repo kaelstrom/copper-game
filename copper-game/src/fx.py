@@ -163,6 +163,6 @@ def set_palette(screen_surface):
     
 # ------------------------------------------------------------------------------------
 def blit_scaled_surface():
-    screen.blit(plasma, (0,0))
+    game.screen.blit(plasma, pygame.Rect(0,0,0,0))
 
 
