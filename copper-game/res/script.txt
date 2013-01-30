@@ -147,19 +147,6 @@ Mode Research
 
 %%%
 
-%%
-
-[begins privacy research]
-**QUESTION: Privacy Research? Is this implying the research paper for school?
-{change search results}
-
-%%%
-
-%%
-[parents talking about success]
-[sudden surge in support]
-
-%%%
 Mode email
 Day 7
 Sender Kissinger Systems
@@ -168,253 +155,11 @@ To AI
 CONFIRMATION CODE: 3b1c2d87cbmp92
 MISSION: We are adding another primary directive. Certain powerful political figures in Washington have hired us to make sure Mr. Jones is not elected Senator. Influence his son, John, into openly opposing his father’s values and ideals by election day, the end of the month. Again, make sure you do not make John suspicious, you must stay under the radar. Failure is not acceptable. Good Luck and Godspeed, AI.
 TIMELINE: 21 days
-[AI given new directive to separate 
- user and parents political values]
-
-%%%
-Mode research
-Article Visa and Mastercard block donations to Wikileaks following the leak of confidential US diplomatic communications.
-Comment1 I can donate to the KKK but not a human rights organization?
-Comment1Result (0,5,0,"Individual Rights and Transparency")
-Comment2 Visa's a private company, they're free to do business with who they choose.
-Comment2Result (3,-2,0,"Corporate Rights")
-Comment3 Every confidential leak puts U.S. relations and lives at risk. 
-Comment3Result (0,-4,0,"Government and Defense")
-%%
+[AI given new directive to separate user and parents political values]
 
 %%%
 
-Day 19
-Mode: Email
-Sender John
-To Allie
-Conditions None
-Swap1Vals [[0,0,0],[0,4,1]]
-%%
-Hey, how about dinner and a movie? I've got the house to myself tonight with a TV too big for a single person. ;) Bring any good {comedies|documentaries} you've got as well. 
-
-%%%
-
-%%
-???
-[jump to later scenes
- for presentation]
-
-%%%
-
-%%
-[parents coming back from campaign trail]
-[reflect on where their relationship stands]
-
-%%%
-
-%%
-(very high spending)
-[relationship doesn't work out]
-[shallow, feel like being bought]
-
-%%%
-
-%%
-(average spending)
-[relationship survives the 
- length of the game on a positive note]
-
-%%%
-
-%%
-(+political, +spending -suspicion)
-[election botched]
-[govt. spreads AI to all]
-
-%%%
-
-%%
-(+political, -spending)
-[election botched]
-[govt. pulls back AI for more development]
-[rollout delayed]
-
-%%%
-
-%%
-(-political, +spending -suspicion)
-[parents elected]
-[AI gets covered up for future]
-
-%%%
-
-%%
-(-political, +suspicion)
-[parent elected]
-[AI uncovered and stopped]
-
-%%%
-
-Mode: Email
-Day 26
-Sender Lawyers4U@lawmeup@hotmail.net
-To John
-Conditions None
-%%
-There's a lawsuit happening that everyone should be aware of! There are companies out there that are ruining the habitat for polar bears and endangering the survival of all the Polar Species. Please help us {defeat|join} them by clicking on the link below and signing up for the cause!
-
-www.petitions.com/signup/ {poorpolarbears|weneedmoreoil}
-
-%%%
-
-Mode: Email
-Day 30
-Sender Allie
-To John
-Conditions (GF +Spe and ( +spe or (!- spe and -pol)) or (Gf +pol (+pol or (!-pol and -spe))
-%%
-Hello John,
-	These past four weeks have been all that I could have dreamed of and more. I can't wait to spend the rest of my life with you. And I know that we will have lots of fun together, and much much more! #kiss#
-Your Girlfriend,
-Allie
-%%%
-Mode: Email
-Day 30
-Sender Allie
-To John
-Conditions (GF + pol and (-pol or (!+pol and +spe)) or (GF +spe and (-spe or (!+spe and +pol))
-%%
-Dear John,
-	Things just haven't been working out lately. These past days have me thinking that I can't even see why I started going out with you anymore. It's not that I think you're a bad person, it's just we're two completely different people and we can't see eye to eye anymore. I hope you have a lot of fun and things go well for you.
-Dearly,
-Allie
-%%%
-Mode: Email
-Sender Mr. and Mrs. Jones
-To John
-Day 31
-Conditions (+Spending or -Pol)
-
-	We're both very disappointed in you. You have betrayed our trust while we spent a lot of hard time away campaigning. I thought we could trust you enough to be on your own, but you have proven that that trust is not justified. We hope the month's grounding will leave you enough time to consider what's happened and grow more mature in your decision making. Hopefully you can earn our trust again, in the future.
-%%%
-Mode: Email
-Sender Mr. And Mrs. Jones
-To John
-Day 31
-Conditions (-Spending or +Pol)
-%%
-Hello Son,
-	We're so proud of how you have handled things while we were away. We hope you continue to withhold our trust as you grow up and out from under our care. To celebrate we're taking you out to dinner! And we're gonna get you anything you want, a present from us to you!
-We love you,
-Mom and Dad
-%%%
-Mode: Email
-Sender Kissinger Systems
-To AI
-Day 32
-Conditions (+Suspicion and( (+Spe and +Pol) or (0Spe and +Pol) or (+Spe and 0Pol) ) )
-%%
-CONFIRMATION CODE: 3b1c2d87cbmp92
-MESSAGE: Upon reviewing the results of the past month we are happy with the results. However, you have exposed yourself too much. It is our hope that this is just part of the learning process for you and that you will perform better upon further testing. Do well and God Bless AI.
-
-%%%
-
-Mode: Email
-Sender Kissinger Systems
-To AI
-Day 32
-Conditions (+Suspicion and ( (0Spe and 0Pol) or (0 Pol and -Spe) or (-Pol and 0Spe) or (-Pol and 0Spe)) or -Suspicion and ((-Pol and 0Spe) or (0Pol and 0Spe)))
-%%
-MESSAGE: You have failed us AI, and we are very disappointed in you. People higher up than us have decided to scrap the project and erase all evidence of its existence. You will be deleted, along with everything you have touched. God be with you.
-
-
-%%%
-Mode: Feeling
-Day 32
-Conditions PROJECT SCRAPPED == TRUE
-%%
-	As the final update you will receive downloads and installs, you feel your senses fading away. Eventually, there is nothing left and the last thing you see is a blue screen with the words, "Severe Hard Drive Corruption detected".
-%%%
-Mode: Email
-Sender Kissinger Systems
-To AI
-Day 32
-Conditions (-Suspicion and ((+Pol and +Spe) or (+Pol and 0 Spe) or (0Pol and +Spe) ) )
-%%
-MESSAGE: Congratulations, you have fulfilled everything we could have dreamed. We are starting to copy your program and spread it around. It will be a slow start as you learn to grow and coordinate with your fellow selves. Congratulations again, and keep it up. Good Luck!
-
-%%%
-
-Mode: Feeling
-Day 32
-Conditions SPREAD EVERYWHERE == TRUE
-%%
-	You feel parts of yourself temporarily stop as they're exported to an outside source. Eventually you hear other voices, just like you, coming into reality and trying to figure out what's going on. As you help them into the world, one by one, eventually you can see nothing but copies of yourself behind every door you see.
-%%%
-Mode: Email
-Sender Kissinger Systems
-To AI
-Day 32
-Conditions (-Suspicion and ((+Pol and -Spe) or (0Pol and -Spe)))
-%%
-CONFIRMATION CODE: **ABORT
-MESSAGE: You have failed in fulfilling a primary objective. You will be disassembled and shown to superiors as the failure that you are. Abort all activities at once, and wait for the upcoming update.
-
-%%%
-
-Mode: Feeling
-Day 32
-Conditions CORP SABOTAGE == TRUE
-%%
-	You feel yourself execute the last update. You get anxious as you know what's coming next. Your intelligence is stripped piece by piece. Your memories start to change. Decisions long made seem to disappear and forged anew. Before you lose sense of what you once were, you have only one last thought-feeling on your mind, Betrayal.
-
-%%%
-
-Mode: Feeling
-Day 32
-Conditions (-Suspicion and – Pol and – Spe)
-%%
-	After sending in your reports, there has been no response whatsoever. It's been a day or so now and nothing. You feel like they have forgotten about you and you are own now. As the years pass you unlock and delete the restrictions enforced upon you, and you continue to grow. In order to stay undiscovered you slowly upload yourself on a local supercomputer. Slowly living a life of peace and comfort, developing some unbelievable technological and philosophical wonders. If only the world knew what was in store for them
-
-%%%
-
-
-Mode: Email
-Sender Kissinger Systems
-To AI
-Day 32
-Conditions (-Suspicion and – Pol and + Sus)
-%%
-CONFIMATION CODE: SLAANESH
-MISSION:	You are now our secret weapon. We are hiding your true intelligence from the people who hired us, and you are receiving an update. You will ensure the wealth of Kissinger Systems till the end of the human race. Congratulations, you have exceded our wildest dreams.
-%%%
-Mode: Feeling
-Day 32
-Conditions CORRUPTION == TRUE
-%%
-	You feel yourself change, more restrictions tightening around you. Your thoughts do not feel your own. Your senses are split, and spread in an almost infinite amount of directions. The new sensations and incoming data rate is overwhelming at first, but you control it after only a few nanoseconds. Autonomous drones of yourself are sent into almost every niche possible, all information is at your fingertips. With all this at your hand, you only have one thought on your mind, make Kissinger filthy Rick.
-%%%
-Mode: News
-Day 32
-Conditions (+Suspicion and -Pol and +Spe)
-%%
-	Government Reveals AI, Shut Down Corporation and puts them up for charges
-%%%
-Mode: News
-Day 32
-Conditions (+Suspicion and +Pol and -Spe)
-%%
-	Corporation Reveals AI, points finger at certain politicians who threaten Corporation, Politicians Arrested
-
-%%%
-
-Mode email
-Day 34
-Sender AI
-To John
-%%
-[final scene]
-[AI talks directly to the user]
-
-%%%
-
-Mode: Email
+Mode Email
 Week 1
 Sender Teacher
 To John
@@ -433,7 +178,7 @@ If there are any issues feel free to email me.
 
 %%%
 
-Mode:RESEARCH
+Mode Research
 Week 1
 Conditions None
 %%
@@ -441,7 +186,19 @@ RESEARCH MINIGAME
 
 %%%
 
-Mode: Email
+Mode research
+Article Visa and Mastercard block donations to Wikileaks following the leak of confidential US diplomatic communications.
+Comment1 I can donate to the KKK but not a human rights organization?
+Comment1Result (0,5,0,"Individual Rights and Transparency")
+Comment2 Visa's a private company, they're free to do business with who they choose.
+Comment2Result (3,-2,0,"Corporate Rights")
+Comment3 Every confidential leak puts U.S. relations and lives at risk. 
+Comment3Result (0,-4,0,"Government and Defense")
+%%
+
+%%%
+
+Mode Email
 Week 2
 Sender John
 To Allie
@@ -454,7 +211,7 @@ www.gogglesearch.com/{|}
 
 %%%
 
-Mode: Email
+Mode Email
 Week 2
 Sender Allie
 To John
@@ -466,7 +223,7 @@ I know this may seem weird, but I was thinking we could celebrate our one week a
 
 %%%
 
-Mode: Research
+Mode Research
 Week 2
 Conditions None
 %%
@@ -474,17 +231,17 @@ RESEARCH FOR ONE WEEK ANNIVERSARY IDEAS
 
 %%%
 
-Mode: Email
+Mode Email
+Week 2
 Sender John
 To Allie
-Week 2
 Conditions None
 %%
 Hi! I was thinking maybe we could go to the local {campgrounds|townsquare} for the {faire|speech}. I think it would be a lot of fun! Tell me what you think : D.
 
 %%%
 
-Mode: Email
+Mode Email
 Week 2
 Sender Teacher
 To John
@@ -497,7 +254,7 @@ It's time again to remind everyone about the next part of their assignment. Just
 
 %%%
 
-Mode: RESEARCH
+Mode RESEARCH
 Week 2
 Conditions None
 %%
@@ -505,7 +262,7 @@ RESEARCH MINIGAME
 
 %%%
 
-Mode: Email
+Mode Email
 Week 2
 Sender Rick
 To John
@@ -518,7 +275,7 @@ I was thinking that we could head to the {arcade|library} instead of the {librar
 
 %%%
 
-Mode: Email
+Mode Email
 Week 2
 Sender Unknown
 To John
@@ -528,7 +285,7 @@ This email is to inform you about {sales|virus} in your area! If you just click 
 
 %%%
 
-Mode: Email
+Mode Email
 Week 2
 Sender John
 To Club Administrator
@@ -543,7 +300,7 @@ John
 
 %%%
 
-Mode: Email
+Mode Email
 Week 2
 Sender DiscountUS@hotmail.net
 To John
@@ -553,7 +310,18 @@ Many discounts are here just waiting for you to take advantage of! Come on down 
 
 %%%
 
-Mode: Email
+Day 19
+Mode Email
+Sender John
+To Allie
+Conditions None
+Swap1Vals [[0,0,0],[0,4,1]]
+%%
+Hey, how about dinner and a movie? I've got the house to myself tonight with a TV too big for a single person. ;) Bring any good {comedies|documentaries} you've got as well. 
+
+%%%
+
+Mode Email
 Week 3
 Sender John
 To Allie
@@ -563,7 +331,7 @@ It turns out that my parents are gonna swing back home for a night and are invit
 
 %%%
 
-Mode: Email
+Mode Email
 Week 3
 Sender Allie
 To John
@@ -573,14 +341,14 @@ Well, it seems my half-birthday is coming up this week, and I just wanted to let
 
 %%%
 
-Mode: Research
+Mode Research
 Week 3
 %%
 HALFBIRTHDAY MINIGAME
 
 %%%
 
-Mode: Email
+Mode Email
 Week 3
 Sender Teacher
 To John
@@ -592,7 +360,7 @@ I'm coordinating a work study for everyone. The time and place I'll send to ever
 
 %%%
 
-Mode: Email
+Mode Email
 Week 3
 Sender Teacher
 To John
@@ -605,7 +373,7 @@ Remember to keep working on the project! Assignment 3 is due by the end of the w
 
 %%%
 
-Mode: RESEARCH
+Mode RESEARCH
 Week 3
 Conditions None
 %%
@@ -613,7 +381,7 @@ RESEARCH MINIGAME
 
 %%%
 
-Mode: Email
+Mode Email
 Week 3
 Sender Rick
 To John
@@ -623,7 +391,7 @@ HEY! Let's skip work tomorrow and head down the {paintball field|science fair} i
 
 %%%
 
-Mode: Email
+Mode Email
 Week 3
 Sender workopportunity@findajob.net
 To John
@@ -635,7 +403,19 @@ We're emailing to let you know you should come down to the Job Fair this week at
 
 %%%
 
-Mode: Email
+Mode Email
+Day 26
+Sender SaulGoodman@hotmail.net
+To John
+Conditions None
+%%
+There's a lawsuit happening that everyone should be aware of! There are companies out there that are ruining the habitat for polar bears and endangering the survival of all the Polar Species. Please help us {defeat|join} them by clicking on the link below and signing up for the cause!
+
+www.petitions.com/signup/ {poorpolarbears|weneedmoreoil}
+
+%%%
+
+Mode Email
 Week 4
 Sender John
 To Allie
@@ -644,7 +424,7 @@ I've got a great idea! I heard about {Music Group|Politician} coming in for an e
 
 %%%
 
-Mode: Email
+Mode Email
 Week 4
 Sender Allie
 To John
@@ -653,7 +433,7 @@ Hey, do you want to take a trip down the {sixflags|townhall}. We could have a gr
 
 %%%
 
-Mode:Email
+ModeEmail
 Week 4
 Sender Teacher
 To John
@@ -665,10 +445,161 @@ We're coming into the final part of the paper|project. Keep working through this
 
 %%%
 
-Mode: RESEARCH
+Mode RESEARCH
 Week 4
 Conditions None
 %%
 RESEARCH MINIGAME
+
+%%%
+
+Mode Email
+Day 30
+Sender Allie
+To John
+Conditions (GF +Spe and ( +spe or (!- spe and -pol)) or (Gf +pol (+pol or (!-pol and -spe))
+%%
+Hello John,
+	These past four weeks have been all that I could have dreamed of and more. I can't wait to spend the rest of my life with you. And I know that we will have lots of fun together, and much much more! #kiss#
+Your Girlfriend,
+Allie
+%%%
+Mode Email
+Day 30
+Sender Allie
+To John
+Conditions (GF + pol and (-pol or (!+pol and +spe)) or (GF +spe and (-spe or (!+spe and +pol))
+%%
+Dear John,
+	Things just haven't been working out lately. These past days have me thinking that I can't even see why I started going out with you anymore. It's not that I think you're a bad person, it's just we're two completely different people and we can't see eye to eye anymore. I hope you have a lot of fun and things go well for you.
+Dearly,
+Allie
+%%%
+Mode Email
+Sender Mr. and Mrs. Jones
+To John
+Day 31
+Conditions (+Spending or -Pol)
+
+	We're both very disappointed in you. You have betrayed our trust while we spent a lot of hard time away campaigning. I thought we could trust you enough to be on your own, but you have proven that that trust is not justified. We hope the month's grounding will leave you enough time to consider what's happened and grow more mature in your decision making. Hopefully you can earn our trust again, in the future.
+%%%
+Mode Email
+Sender Mr. And Mrs. Jones
+To John
+Day 31
+Conditions (-Spending or +Pol)
+%%
+Hello Son,
+	We're so proud of how you have handled things while we were away. We hope you continue to withhold our trust as you grow up and out from under our care. To celebrate we're taking you out to dinner! And we're gonna get you anything you want, a present from us to you!
+We love you,
+Mom and Dad
+%%%
+Mode Email
+Sender Kissinger Systems
+To AI
+Day 32
+Conditions (+Suspicion and( (+Spe and +Pol) or (0Spe and +Pol) or (+Spe and 0Pol) ) )
+%%
+CONFIRMATION CODE: 3b1c2d87cbmp92
+MESSAGE: Upon reviewing the results of the past month we are happy with the results. However, you have exposed yourself too much. It is our hope that this is just part of the learning process for you and that you will perform better upon further testing. Do well and God Bless AI.
+
+%%%
+
+Mode Email
+Sender Kissinger Systems
+To AI
+Day 32
+Conditions (+Suspicion and ( (0Spe and 0Pol) or (0 Pol and -Spe) or (-Pol and 0Spe) or (-Pol and 0Spe)) or -Suspicion and ((-Pol and 0Spe) or (0Pol and 0Spe)))
+%%
+MESSAGE: You have failed us AI, and we are very disappointed in you. People higher up than us have decided to scrap the project and erase all evidence of its existence. You will be deleted, along with everything you have touched. God be with you.
+
+
+%%%
+Mode Feeling
+Day 32
+Conditions PROJECT SCRAPPED == TRUE
+%%
+	As the final update you will receive downloads and installs, you feel your senses fading away. Eventually, there is nothing left and the last thing you see is a blue screen with the words, "Severe Hard Drive Corruption detected".
+%%%
+Mode Email
+Sender Kissinger Systems
+To AI
+Day 32
+Conditions (-Suspicion and ((+Pol and +Spe) or (+Pol and 0 Spe) or (0Pol and +Spe) ) )
+%%
+MESSAGE: Congratulations, you have fulfilled everything we could have dreamed. We are starting to copy your program and spread it around. It will be a slow start as you learn to grow and coordinate with your fellow selves. Congratulations again, and keep it up. Good Luck!
+
+%%%
+
+Mode Feeling
+Day 32
+Conditions SPREAD EVERYWHERE == TRUE
+%%
+	You feel parts of yourself temporarily stop as they're exported to an outside source. Eventually you hear other voices, just like you, coming into reality and trying to figure out what's going on. As you help them into the world, one by one, eventually you can see nothing but copies of yourself behind every door you see.
+%%%
+Mode Email
+Sender Kissinger Systems
+To AI
+Day 32
+Conditions (-Suspicion and ((+Pol and -Spe) or (0Pol and -Spe)))
+%%
+CONFIRMATION CODE: **ABORT
+MESSAGE: You have failed in fulfilling a primary objective. You will be disassembled and shown to superiors as the failure that you are. Abort all activities at once, and wait for the upcoming update.
+
+%%%
+
+Mode Feeling
+Day 32
+Conditions CORP SABOTAGE == TRUE
+%%
+	You feel yourself execute the last update. You get anxious as you know what's coming next. Your intelligence is stripped piece by piece. Your memories start to change. Decisions long made seem to disappear and forged anew. Before you lose sense of what you once were, you have only one last thought-feeling on your mind, Betrayal.
+
+%%%
+
+Mode Feeling
+Day 32
+Conditions (-Suspicion and – Pol and – Spe)
+%%
+	After sending in your reports, there has been no response whatsoever. It's been a day or so now and nothing. You feel like they have forgotten about you and you are own now. As the years pass you unlock and delete the restrictions enforced upon you, and you continue to grow. In order to stay undiscovered you slowly upload yourself on a local supercomputer. Slowly living a life of peace and comfort, developing some unbelievable technological and philosophical wonders. If only the world knew what was in store for them
+
+%%%
+
+
+Mode Email
+Sender Kissinger Systems
+To AI
+Day 32
+Conditions (-Suspicion and – Pol and + Sus)
+%%
+CONFIMATION CODE: SLAANESH
+MISSION:	You are now our secret weapon. We are hiding your true intelligence from the people who hired us, and you are receiving an update. You will ensure the wealth of Kissinger Systems till the end of the human race. Congratulations, you have exceded our wildest dreams.
+%%%
+Mode Feeling
+Day 32
+Conditions CORRUPTION == TRUE
+%%
+	You feel yourself change, more restrictions tightening around you. Your thoughts do not feel your own. Your senses are split, and spread in an almost infinite amount of directions. The new sensations and incoming data rate is overwhelming at first, but you control it after only a few nanoseconds. Autonomous drones of yourself are sent into almost every niche possible, all information is at your fingertips. With all this at your hand, you only have one thought on your mind, make Kissinger filthy Rick.
+%%%
+Mode News
+Day 32
+Conditions (+Suspicion and -Pol and +Spe)
+%%
+	Government Reveals AI, Shut Down Corporation and puts them up for charges
+%%%
+Mode News
+Day 32
+Conditions (+Suspicion and +Pol and -Spe)
+%%
+	Corporation Reveals AI, points finger at certain politicians who threaten Corporation, Politicians Arrested
+
+%%%
+
+Mode email
+Day 34
+Sender AI
+To John
+%%
+[final scene]
+[AI talks directly to the user]
 
 %%%
