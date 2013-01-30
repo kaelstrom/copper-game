@@ -39,6 +39,9 @@ class ChoiceNode(node.Node):
         self.gamerunning = False
         self.children[0], self.children[1] = self.children[1], self.children[0]
         self.vals[0], self.vals[1] = self.vals[1], self.vals[0]
+        for i in range(len(self.children[0].text)):
+            if self.children[0].text[i] != self.game.result_text:
+                self.vals[0][2] += 1
         self.children[0].text = self.game.result_text
         self.parent.set_all('plasma', False)
         self.parent.set_all('choicemade', True)

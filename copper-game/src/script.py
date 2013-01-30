@@ -8,7 +8,7 @@ class Script(object):
         self.to = 'unknown'
         self.id = ''
         self.mode = 'email'
-        self.condition = True
+        self.conditions = True
         self.scene_skipped = False
         self.swap1vals =[[0,0,0],[0,0,0]]
         self.swap2vals = [[0,0,0],[0,0,0]]

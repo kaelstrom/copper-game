@@ -40,8 +40,8 @@ class ScriptManager(object):
         for key in sort:
             val = self.scenes[str(key)]
             if not val.scene_viewed and not val.scene_skipped:
-                print 'scriptman - evaluating ' + str(val.condition)
-                if eval(str(val.condition)):
+                print 'scriptman - evaluating ' + str(val.conditions)
+                if eval(str(val.conditions)):
                     val.scene_viewed = True
                     game.active_node = self.active_node = val
                     return
@@ -97,7 +97,7 @@ class ScriptManager(object):
     def generate_nodes(self):
         self.scenes['0'] = title.Title()
         self.scenes['0'].scene_skipped = False
-        self.scenes['0'].condition = True
+        self.scenes['0'].conditions = True
         for key, val in self.scripts.items():
             #print '----------------'
             #print val.mode

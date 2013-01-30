@@ -193,7 +193,7 @@ class CommentGame(node.Node):
         super(CommentGame, self).__init__()
         self.scene_viewed = False
         self.scene_skipped = False
-        self.condition = True
+        self.conditions = True
         self.links = []
         self.votes = []
         self.wave_val = 1
@@ -252,6 +252,9 @@ class CommentGame(node.Node):
                                                         com3="Comment 3", com3r=(0,0,0,"art1 - com3 chosen")):
         self.links = []
         self.votes = []
+        self.com1r = com1r
+        self.com2r = com2r
+        self.com3r = com3r
         self.cbutton = continuenode.ContinueNode("CONTINUE", pygame.Rect(600, 10, 300, 80), self.end_game)
         self.cbutton.fade = .2
         self.cbutton.fade_rate = .00

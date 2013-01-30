@@ -20,3 +20,6 @@ image rich.png
 name Steadfast Financial
 image sf.png
 %%%
+name Mr. and Mrs. Jones
+image unknown.png
+%%%
