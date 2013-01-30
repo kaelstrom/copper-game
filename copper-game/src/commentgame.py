@@ -6,6 +6,7 @@ import random
 import math
 import copy
 import continuenode
+import helpnode
 
 class Link(node.Node):
     def __init__(self, mode="basic", rect=pygame.Rect(0,0,16,16)):
@@ -198,6 +199,8 @@ class CommentGame(node.Node):
         self.mode = mode
         if self.mode == "game":
             self.generate()
+            self.add(helpnode.HelpNode("This is the research viewer. A headline is shown at the top and responding comments are at the bottom. Redirect upvotes and downvotes by clicking the pulsing nodes in the switchboard. Nodes will automatically change over time. Once all votes go through, the winning comment will determine John's outlook." )) 
+        
         elif self.mode == "title":
             self.create_title()
             

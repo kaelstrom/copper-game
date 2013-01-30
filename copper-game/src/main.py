@@ -65,7 +65,7 @@ class Game(object):
                     #self.scene_num = (self.scene_num + 1) % len(self.scenes)
                     #self.active_node = self.scenes[self.scene_num]
                 if event.key == pygame.K_RIGHT:
-                    self.fade_to_scene(emailnode.test_email())
+                    game.script.next_scene()
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
         self.active_node.input_all(events)

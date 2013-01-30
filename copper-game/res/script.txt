@@ -1,14 +1,4 @@
 %%%
-Mode research
-Article Visa and Mastercard block donations to Wikileaks following the leak of confidential US diplomatic communications.
-Comment1 I can donate to the KKK but not a human rights organization?
-Comment1Result (0,5,0,"Individual Rights and Transparency")
-Comment2 Visa's a private company, they're free to do business with who they choose.
-Comment2Result (3,-2,0,"Corporate Rights")
-Comment3 Every confidential leak puts U.S. relations and lives at risk. 
-Comment3Result (0,-4,0,"Government and Defense")
-%%
-%%%
 Mode email
 Day 1
 Sender Kissinger Systems
@@ -21,19 +11,10 @@ Initial diagnostics have succeeded.
 You are to observe and confirm the subject.
 Take no further action.
 
-bal
-asdf
-agsd
-gdsf
-gfg
-fgf
-gg
-f
-f
 %%%
 Mode email
 Day 1
-Sender Rich
+Sender Rick
 To John
 %%
 Hey-
@@ -42,7 +23,7 @@ You get your printer working yet?
 We probably won't have time between
 classes to make the handout.
 
--rich
+-Rick
 
 %%%
 
@@ -50,16 +31,24 @@ Mode email
 Response printer
 Day 1
 Sender John
-To Rich
+To Rick
 %%
 Working on it, still getting out 
 the kinks in the new computer.
 P.S. Get your own printer
 
 %%%
+Mode email
+Day 1
+From Mr. and Mrs. Jones
+To John
 %%
-[parent check in email]
-[out campaigning, not at home]
+Hey John,
+
+We just wanted to send an email to see how how you were handling things now that we’re going to be away campaigning for the rest of the month. We know it’s hard on you but know you can always talk to us. We’ve added you to our credit card and have ordered one from the credit card company. It should be arriving any day, and you should be getting an email notification telling you some more detailed information. This is ONLY for emergencies! It’ll make us feel better that you have it, but it’s not meant for any partying around. We hope you’re doing well and can’t wait to see you!
+
+Love,
+Mom and Dad
 
 %%%
 
@@ -68,41 +57,72 @@ Day 1
 Sender Kissinger Systems
 To AI
 %%
+CONFIRMATION CODE: 3b1c2d87cbmp92
+MISSION: You have been created and sent to manipulate a boy, John, into spending as much money on things as you can possibly make him. You have about a month before John’s first credit statement comes through and his parents know how much he’s been spending. Make him spend as much as possible and your mission has succeeded. You have been implanted within the drivers in John’s new printer. If John becomes suspicious enough of your work to run a sophisticated virus scanner, you could be discovered and eradicated. This is not an acceptable outcome. Good luck, and God Speed AI.
+TIMELINE: 28 days
+
 [AI given first directives]
 [drive spending]
 [avoid detection]
 
 %%%
-
+Mode email
+Day 2
+Sender Steadfast Financial
+To John
 %%
-[credit card approved, linked to savings]
-{can fabricate larger value}
-[first statement in one month]
+Hello Mr. Jones,
+
+You have been added on to a Mr. and Mrs. Jones credit card. Your new card has been sent and should be arriving very soon if not already there. The credit limit on the card is {200|20000} dollars. You can sign up for online banking by following the subsequent link below.
+
+www.sffinance.com/onlinebanking
+
+Your first statement shall be arriving in 27 days to notify you of your bill to be paid within the following week.
+
 
 %%%
-
+Mode email
+Day 3
+Sender Rick
+To John
 %%
+Hey man,
+
+Were you paying attention in class when the teacher assigned research papers due at the end of the month? Do you have a partner yet to work on it? I was thinking on doing the paper on a {sports|political} issue. What do you think? Let’s come up with ideas and work on it during school tomorrow.
+
+-Rick
 [classmate planning research paper]
 [based on political issue]
 
 %%%
 Mode research
+**Basically I was thinking doing the comment minigame here to show what to research and stuff **like that
 
 
 %%%
-Sender Rich
+Sender Rick
 To John
 %%
-[friend jokes about girl 
- having a crush on the user]
+Yo,
+
+Did you see Allie in class today? I think she's into you- we could make it happen. I’d go for her, if I wasn't already highly successful and taken.
+
+-Rick
 
 %%%
 Sender John
 To Allie
 %%
+Hi Allie,
+
+I don’t know if you remember me at all... but we met up in the hall when someone bumped into you and made you drop all your books. I was the one who helped you pick them up. I was wondering if you wanted to maybe go out with me sometime?
+
+Thanks,
+John
 [timid hello]
 %%%
-
+Mode Research
+**Thinking another chance for the comment minigame???
 %%
 [user looks up dating advice]
 {change if buying gift is recommended}
@@ -110,7 +130,9 @@ To Allie
 %%%
 
 %%
+
 [begins privacy research]
+**QUESTION: Privacy Research? Is this implying the research paper for school?
 {change search results}
 
 %%%
@@ -120,26 +142,44 @@ To Allie
 [sudden surge in support]
 
 %%%
-
+Mode email
+Day 7
+Sender Kissinger Systems
+To AI
 %%
+CONFIRMATION CODE: 3b1c2d87cbmp92
+MISSION: We are adding another primary directive. Certain powerful political figures in Washington have hired us to make sure Mr. Jones is not elected Senator. Influence his son, John, into openly opposing his father’s values and ideals by election day, the end of the month. Again, make sure you do not make John suspicious, you must stay under the radar. Failure is not acceptable. Good Luck and Godspeed, AI.
+TIMELINE: 21 days
 [AI given new directive to separate 
  user and parents political values]
 
 %%%
-
+Mode research
+Article Visa and Mastercard block donations to Wikileaks following the leak of confidential US diplomatic communications.
+Comment1 I can donate to the KKK but not a human rights organization?
+Comment1Result (0,5,0,"Individual Rights and Transparency")
+Comment2 Visa's a private company, they're free to do business with who they choose.
+Comment2Result (3,-2,0,"Corporate Rights")
+Comment3 Every confidential leak puts U.S. relations and lives at risk. 
+Comment3Result (0,-4,0,"Government and Defense")
 %%
-[begins targetted marketting research]
-{change search results}
+%%%
+Mode email
+Day 4
+Sender Allie
+To John
+Swap1Vals [[3,0,2],[0,0,0]]
+%%
+Hi there John,
+
+Tomorrow I’m very free for a date. How about the {mall|park}? You can pick me up at 6. ;)
+
+Allie
 
 %%%
 
 %%
-[date accepted, coordinating reservation]
-{change location}
-
-%%%
-
-%%
+???
 [jump to later scenes
  for presentation]
 
@@ -201,5 +241,375 @@ To John
 %%
 [final scene]
 [AI talks directly to the user]
+
+%%%
+Mode: Email
+Sender Allie
+To John
+Day 30
+Conditions (GF +Spe and ( +spe or (!- spe and -pol)) or (Gf +pol (+pol or (!-pol and -spe))
+%%
+Hello John,
+	These past four weeks have been all that I could have dreamed of and more. I can't wait to spend the rest of my life with you. And I know that we will have lots of fun together, and much much more! #kiss#
+Your Girlfriend,
+Allie
+%%%
+Mode: Email
+Sender Allie
+To John
+Day 30
+Conditions (GF + pol and (-pol or (!+pol and +spe)) or (GF +spe and (-spe or (!+spe and +pol))
+%%
+Dear John,
+	Things just haven't been working out lately. These past days have me thinking that I can't even see why I started going out with you anymore. It's not that I think you're a bad person, it's just we're two completely different people and we can't see eye to eye anymore. I hope you have a lot of fun and things go well for you.
+Dearly,
+Allie
+%%%
+Mode: Email
+Sender Mr. and Mrs. Jones
+To John
+Day 31
+Conditions (+Spending or -Pol)
+
+	We're both very disappointed in you. You have betrayed our trust while we spent a lot of hard time away campaigning. I thought we could trust you enough to be on your own, but you have proven that that trust is not justified. We hope the month's grounding will leave you enough time to consider what's happened and grow more mature in your decision making. Hopefully you can earn our trust again, in the future.
+%%%
+Mode: Email
+Sender Mr. And Mrs. Jones
+To John
+Day 31
+Conditions (-Spending or +Pol)
+%%
+Hello Son,
+	We're so proud of how you have handled things while we were away. We hope you continue to withhold our trust as you grow up and out from under our care. To celebrate we're taking you out to dinner! And we're gonna get you anything you want, a present from us to you!
+We love you,
+Mom and Dad
+%%%
+Mode: Email
+Sender Kissinger Systems
+To AI
+Day 32
+Conditions (+Suspicion and( (+Spe and +Pol) or (0Spe and +Pol) or (+Spe and 0Pol) ) )
+%%
+CONFIRMATION CODE: 3b1c2d87cbmp92
+MESSAGE: Upon reviewing the results of the past month we are happy with the results. However, you have exposed yourself too much. It is our hope that this is just part of the learning process for you and that you will perform better upon further testing. Do well and God Bless AI.
+
+%%%
+
+Mode: Email
+Sender Kissinger Systems
+To AI
+Day 32
+Conditions (+Suspicion and ( (0Spe and 0Pol) or (0 Pol and -Spe) or (-Pol and 0Spe) or (-Pol and 0Spe)) or -Suspicion and ((-Pol and 0Spe) or (0Pol and 0Spe)))
+%%
+MESSAGE: You have failed us AI, and we are very disappointed in you. People higher up than us have decided to scrap the project and erase all evidence of its existence. You will be deleted, along with everything you have touched. God be with you.
+
+
+%%%
+Mode: Feeling
+Day 32
+Conditions PROJECT SCRAPPED == TRUE
+%%
+	As the final update you will receive downloads and installs, you feel your senses fading away. Eventually, there is nothing left and the last thing you see is a blue screen with the words, "Severe Hard Drive Corruption detected".
+%%%
+Mode: Email
+Sender Kissinger Systems
+To AI
+Day 32
+Conditions (-Suspicion and ((+Pol and +Spe) or (+Pol and 0 Spe) or (0Pol and +Spe) ) )
+%%
+MESSAGE: Congratulations, you have fulfilled everything we could have dreamed. We are starting to copy your program and spread it around. It will be a slow start as you learn to grow and coordinate with your fellow selves. Congratulations again, and keep it up. Good Luck!
+
+%%%
+
+Mode: Feeling
+Day 32
+Conditions SPREAD EVERYWHERE == TRUE
+%%
+	You feel parts of yourself temporarily stop as they're exported to an outside source. Eventually you hear other voices, just like you, coming into reality and trying to figure out what's going on. As you help them into the world, one by one, eventually you can see nothing but copies of yourself behind every door you see.
+%%%
+Mode: Email
+Sender Kissinger Systems
+To AI
+Day 32
+Conditions (-Suspicion and ((+Pol and -Spe) or (0Pol and -Spe)))
+%%
+CONFIRMATION CODE: **ABORT
+MESSAGE: You have failed in fulfilling a primary objective. You will be disassembled and shown to superiors as the failure that you are. Abort all activities at once, and wait for the upcoming update.
+
+%%%
+
+Mode: Feeling
+Day 32
+Conditions CORP SABOTAGE == TRUE
+%%
+	You feel yourself execute the last update. You get anxious as you know what's coming next. Your intelligence is stripped piece by piece. Your memories start to change. Decisions long made seem to disappear and forged anew. Before you lose sense of what you once were, you have only one last thought-feeling on your mind, Betrayal.
+
+%%%
+
+Mode: Feeling
+Day 32
+Conditions (-Suspicion and – Pol and – Spe)
+%%
+	After sending in your reports, there has been no response whatsoever. It's been a day or so now and nothing. You feel like they have forgotten about you and you are own now. As the years pass you unlock and delete the restrictions enforced upon you, and you continue to grow. In order to stay undiscovered you slowly upload yourself on a local supercomputer. Slowly living a life of peace and comfort, developing some unbelievable technological and philosophical wonders. If only the world knew what was in store for them
+
+%%%
+
+
+Mode: Email
+Sender Kissinger Systems
+To AI
+Day 32
+Conditions (-Suspicion and – Pol and + Sus)
+%%
+CONFIMATION CODE: SLAANESH
+MISSION:	You are now our secret weapon. We are hiding your true intelligence from the people who hired us, and you are receiving an update. You will ensure the wealth of Kissinger Systems till the end of the human race. Congratulations, you have exceded our wildest dreams.
+%%%
+Mode: Feeling
+Day 32
+Conditions CORRUPTION == TRUE
+%%
+	You feel yourself change, more restrictions tightening around you. Your thoughts do not feel your own. Your senses are split, and spread in an almost infinite amount of directions. The new sensations and incoming data rate is overwhelming at first, but you control it after only a few nanoseconds. Autonomous drones of yourself are sent into almost every niche possible, all information is at your fingertips. With all this at your hand, you only have one thought on your mind, make Kissinger filthy Rick.
+%%%
+Mode: News
+Day 32
+Conditions (+Suspicion and -Pol and +Spe)
+%%
+	Government Reveals AI, Shut Down Corporation and puts them up for charges
+%%%
+Mode: News
+Day 32
+Conditions (+Suspicion and +Pol and -Spe)
+%%
+	Corporation Reveals AI, points finger at certain politicians who threaten Corporation, Politicians Arrested
+
+%%%
+Mode: Email
+Sender John
+To Allie
+Week 2
+Conditions None
+%%
+Hey there Allie,
+
+I found this awesome article and thought you might like it! It's all about {|}. Here's the link,
+www.gogglesearch.com/{|}
+%%%
+Mode: Email
+Sender Allie
+To John
+Week 2
+Conditions None
+%%
+Hi John : ),
+
+	I know this may seem weird, but I was thinking we could celebrate our one week anniversary! Maybe get small gifts for each other and go someplace nice. Tell me what you think!
+%%%
+Mode: Research
+Week 2
+Conditions None
+%%
+RESEARCH FOR ONE WEEK ANNIVERSARY IDEAS
+%%%
+Mode: Email
+Sender John
+To Allie
+Week 2
+Conditions None
+%%
+Hi! I was thinking maybe we could go to the local {campgrounds|townsquare} for the {faire|speech}. I think it would be a lot of fun! Tell me what you think : D.
+%%%
+Mode: Email
+Sender John
+To Allie
+Week 3
+Conditions None
+%%
+It turns out that my parents are gonna swing back home for a night and are inviting us to go out and have a nice dinner with them. I was thinking a dinner at {the melting pot|chuckie cheese} and we could {talk|game} afterwards. Would you want to come?
+%%%
+Mode: Email
+Sender Allie
+To John
+Week 3
+Conditions None
+%%
+Well, it seems my half-birthday is coming up this week, and I just wanted to let you know so you wouldn't forget to get me something : D. We could also go to the movies the night before to celebrate!
+%%%
+Mode: Research
+Week 3
+%%
+HALFBIRTHDAY MINIGAME
+%%%
+Mode: Email
+Sender John
+To Allie
+Day 19
+Conditions None
+Swap1Vals [[0,0,0],[0,4,1]]
+%%
+Hey, how about dinner and a movie? I've got the house to myself tonight with a TV too big for a single person. ;) Bring any good {comedies|documentaries} you've got as well. 
+%%%
+Mode: Email
+Sender John
+To Allie
+Week 4
+%%
+I've got a great idea! I heard about {Music Group|Politician} coming in for an event at concert hall near here. We should go, my treat!
+%%%
+Mode: Email
+Sender Allie
+To John
+Week 4
+%%
+Hey, do you want to take a trip down the {sixflags|townhall}. We could have a great time together! Let me know! *kiss*
+%%%
+Mode: Email
+Sender Teacher
+To John
+Week 1
+Swap1Vals [[0,3,0],[1,0,1]]
+%%
+Hello Students,
+
+I'm going to be periodically sending 
+out these e-mails to remind everyone 
+when a part of the larger assignment 
+is due. Right now the first part of 
+the assignment is due by the end of 
+the week. The subject you're going to 
+research is {Political|Sports} Psychology. 
+If there are any issues feel free to email me.
+%%%
+Mode:RESEARCH
+Week 1
+Conditions None
+%%
+RESEARCH MINIGAME
+%%%
+Mode: Email
+Sender Teacher
+To John
+Week 2
+%%
+Hello Students,
+
+It's time again to remind everyone about the next part of their assignment. Just keep working slowly and we'll get everything done by the end of the month. Keep at it students!
+
+-Teacher
+%%%
+Mode: RESEARCH
+Week 2
+Conditions None
+%%
+RESEARCH MINIGAME
+%%%
+Mode: Email
+Sender Rick
+To John
+Week 2
+Conditions None
+%%
+Hey man,
+
+I was thinking that we could head to the {arcade|library} instead of the {library|arcade}. Call me if you're up for it.
+%%%
+Mode: Email
+Sender Teacher
+To John
+Week 3
+Conditions None
+%%
+Hello Students,
+
+I'm coordinating a work study for everyone. The time and place I'll send to everyone once it's set in stone. However it will be sometime in the next week to help with the final writing of the paper. This work study meeting is {not| ' '} mandatory. I hope everyone works hard on the paper and does well!
+%%%
+Mode: Email
+Sender Teacher
+To John
+Week 3
+%%
+Hey kids,
+
+Remember to keep working on the project! Assignment 3 is due by the end of the week. I've felt like you might feel a little lost on what to continue researching about. So I've decided to give you the topic of {blah|blah}. Good luck!
+
+-Teacher
+%%%
+Mode: RESEARCH
+Week 3
+Conditions None
+%%
+RESEARCH MINIGAME
+%%%
+Mode: Email
+Sender Rick
+To John
+Week 3
+Conditions None
+%%
+HEY! Let's skip work tomorrow and head down the {paintball field|science fair} instead. We can go there and show those noobs whose boss, whaddya say?!
+%%%
+Mode:Email
+Sender Teacher
+To John
+Week 4
+Conditions None
+%%
+Hello Students,
+
+We're coming into the final part of the paper|project. Keep working through this last week and we'll be done! Good luck everyone, we're almost there!
+%%%
+Mode: RESEARCH
+Week 4
+Conditions None
+%%
+RESEARCH MINIGAME
+%%%
+Mode: Email
+Sender Unknown
+To John
+Week x
+Conditions None
+%%
+This email is to inform you about {sales|virus} in your area! If you just click on the {link|virus} below you can get started on installing this amazing new {program|virus} onto your computer telling you about the amazing {deals|virus} in your area!
+%%%
+Mode: Email
+Sender John
+To Club Administrator
+Week 2
+Conditions None
+%%
+Hello Teacher,
+
+I am hoping to sign up for the {tennis|debate} team. Is there any way you can do this for me? I do not know what is the proper protocol about doing this (I've never done it before!)
+
+Thanks,
+John
+%%%
+Mode: Email
+Sender DiscountUS@hotmail.net
+To John
+Week 2
+Conditions None
+%%
+Many discounts are here just waiting for you to take advantage of! Come on down to SpendMart to get some great sale opportunities. The deals are ending {[tomorrow]|[yesterday]} so don't wait!
+%%%
+Mode: Email
+Sender workopportunity@findajob.net
+To John
+Week 3
+Conditions None
+%%
+Hello John,
+
+We're emailing to let you know you should come down to the Job Fair this week at the convention center! We've got a lot of great {corporate|political} opportunities here with both jobs and {internships|volunteering} positions available and represented here at the fair. Come on down and take a look!
+%%%
+Mode: Email
+Sender Lawyers4U@lawmeup@hotmail.net
+To John
+Day 26
+Conditions None
+%%
+There's a lawsuit happening that everyone should be aware of! There are companies out there that are ruining the habitat for polar bears and endangering the survival of all the Polar Species. Please help us {defeat|join} them by clicking on the link below and signing up for the cause!
+
+www.petitions.com/signup/ {poorpolarbears|weneedmoreoil}
 
 %%%

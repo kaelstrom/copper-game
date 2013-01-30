@@ -7,6 +7,7 @@ import uservaluenode
 import continuenode
 import contactnode
 import scrollbox
+import helpnode
 
 class EmailNode(node.Node):
     def __init__(self, text="", vals=None, rect=pygame.Rect(0,0,1000,1000)):
@@ -26,6 +27,7 @@ class EmailNode(node.Node):
         self.to = None
         self.rect = rect
         self.text = text
+        self.add(helpnode.HelpNode("This is the email viewer. From this screen you can intercept communication and manipulate words that are flashing. These changes will affect John's values displayed in the bottom right. When you are done with an email, hit continue to apply the changes and move on.")) 
         #self.generate(text, rect)
         
     def draw(self):
@@ -61,7 +63,7 @@ class EmailNode(node.Node):
             self.to = 'unknown'
             
         self.to_contact = game.contacts[self.to.lower()]
-            
+        self.vals = [self.swap1vals, self.swap2vals]
         tmp = scrollbox.ScrollBox()
         tmp.generate(self.text, self.vals, pygame.Rect(50,230,900,460))
         

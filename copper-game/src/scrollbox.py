@@ -49,8 +49,8 @@ class ScrollBox(node.Node):
         #    game.screen.draw_text(s.text, s.rect.move(0,-self.scroll), scaling=True, depth=-10)
        
     def create_scroll_bar(self, size = 32):
-        print "self.rect.top" 
-        print self.rect.top
+        #print "self.rect.top" 
+        #print self.rect.top
         self.scroll_up_surf = pygame.image.load("../res/scroll_up.png")
         self.scroll_down_surf = pygame.transform.flip(self.scroll_up_surf, False, True)
         self.scroll_up_rect = pygame.Rect(self.rect.right-size,self.rect.top,size,size)
@@ -126,7 +126,7 @@ class ScrollBox(node.Node):
             s.rect.move_ip(0,-val)
         self.scroll_bar_rect.move_ip(0, self.scroll_bar_dist * (val / (self.scroll_bounds[1] - self.scroll_bounds[0])))
         
-    def generate(self, text, vals, rect):
+    def generate(self, text, vals=None, rect=pygame.Rect(100,100,100,100)):
 
         self.text = text
         self.vals = vals
@@ -165,6 +165,7 @@ class ScrollBox(node.Node):
                 self.scrollnodes.append(tmp)
                 self.disp_rect.move_ip(0,spacing)
             else:
+                print '    ' + line
                 lft = line.split('{')[0]
                 rht = line.split('{')[1].split('}')[1]
                 try:
@@ -181,7 +182,13 @@ class ScrollBox(node.Node):
                 #choice_rect.x = tmp.orig_rect.right
                 for i in lft:
                    choice_rect.move_ip(20,0)
-                cnode = choicenode.ChoiceNode(a,b, vals=self.vals[c], rect=choice_rect.copy())
+                try:
+                    cvals = self.vals[c]
+                except:
+                    print "ERROR: no swap vals. too many swap games?"
+                    cvals = [[[0,0,0],[0,0,0]],[[0,0,0],[0,0,0]]]
+                   
+                cnode = choicenode.ChoiceNode(a,b, vals=cvals, rect=choice_rect.copy())
                 if len(a) <= 8:
                     cnode.mode = 'hard'
                 if line != '\n':

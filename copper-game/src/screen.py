@@ -54,7 +54,7 @@ class Screen(object):
         #disp_rect = self.scale_rect(disp_surf.get_rect().move(rect.x, rect.y))
         disp_rect = self.scale_rect(rect)
         if plasma:
-            shift = 6*(.5-math.sin(pygame.time.get_ticks()/100))
+            shift = 6*(1-math.sin(pygame.time.get_ticks()/100))
             disp_rect.width += shift
             disp_rect.height += shift
             disp_rect.x -= (shift/2)

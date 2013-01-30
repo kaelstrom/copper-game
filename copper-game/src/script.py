@@ -8,4 +8,9 @@ class Script(object):
         self.to = 'unknown'
         self.id = ''
         self.mode = 'email'
+        self.condition = True
+        self.swap1vals =[[0,0,0],[0,0,0]]
+        self.swap2vals = [[0,0,0],[0,0,0]]
+        self.swap1blurbs = None
+        self.swap2blurbs = None
         

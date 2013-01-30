@@ -93,6 +93,7 @@ class ScriptManager(object):
     def generate_nodes(self):
         self.scenes['0'] = title.Title()
         for key, val in self.scripts.items():
+            print '----------------'
             print val.mode
             if val.mode == 'email':
                 #print vars(val)

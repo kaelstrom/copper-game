@@ -6,6 +6,8 @@ import sound
 import uservaluenode
 import random
 import string
+import helpnode
+import continuenode
 
 class SwapLetter(node.Node):
     def __init__(self, letter, rect):
@@ -21,7 +23,7 @@ class SwapLetter(node.Node):
         self.surf = game.font_tempesta.render(self.letter,1,(200,200,200))
         
     def draw(self):
-        game.screen.blit(self.surf, self.rect, plasma=self.plasma)
+        game.screen.blit(self.surf, self.rect, plasma=self.plasma, depth = 14)
         
 class LetterPair(node.Node):
     def __init__(self, lft, rht, rect, speed, delay, threshold):
@@ -83,11 +85,11 @@ class LetterPair(node.Node):
         #if self.active:
         #    game.screen.draw_outline(self.rect, (50,50,50), 0)
         if self.getting_input:
-            game.screen.draw_outline(self.rect, (0,0,80), 0)
+            game.screen.draw_outline(self.rect, (0,0,80), 0,depth=13)
         if self.success:
-            game.screen.draw_outline(self.rect, (0,80,0), 0)
+            game.screen.draw_outline(self.rect, (0,80,0), 0,depth=13)
         elif self.failure:
-            game.screen.draw_outline(self.rect, (80,0,0), 0)
+            game.screen.draw_outline(self.rect, (80,0,0), 0,depth=13)
                 
     def input(self, events):
         if self.getting_input:
@@ -154,6 +156,8 @@ class StringSwapGame(node.Node):
         self.hit_rect.width = self.hit_rect.width - width*.1
         self.rect.x = self.rect.x - width*.1
         self.hit_rect.x = self.hit_rect.x - width*.1
+        self.add(helpnode.HelpNode("This is the word swap screen. Once started, the letters from above will fall and the letters from below will rise. To successfully swap, press both letters as they pass each other. Each botched swap will raise John's suspicion.", depth=3)) 
+        
         
     def act(self):
         if self.cback is not None:
@@ -171,9 +175,9 @@ class StringSwapGame(node.Node):
         for s in self.swaplist:
             s.draw_bg()
         for r in self.draw_rects:
-            game.screen.draw_outline(r, (50,50,50), 2)
-        game.screen.draw_outline(self.rect)
-        game.screen.draw_outline(self.hit_rect)
+            game.screen.draw_outline(r, (50,50,50), 2,depth = 12)
+        game.screen.draw_outline(self.rect,depth =12)
+        game.screen.draw_outline(self.hit_rect,depth=12)
     
    # def draw_all(self):
     #    self.draw()
