@@ -164,6 +164,7 @@ class StringSwapGame(node.Node):
             for s in self.swaplist:
                 if not (s.success or s.failure):
                     return
+            print self.cback
             self.cback()
         
     def next(self):
@@ -179,10 +180,10 @@ class StringSwapGame(node.Node):
         game.screen.draw_outline(self.rect,depth =12)
         game.screen.draw_outline(self.hit_rect,depth=12)
     
-   # def draw_all(self):
-    #    self.draw()
-     #   for p in self.swaplist:
-      #      p.draw_all()
+    def draw_all(self):
+        self.draw()
+        for p in self.swaplist:
+            p.draw_all()
             
     def act_all(self):
         self.act()
@@ -193,8 +194,12 @@ class StringSwapGame(node.Node):
     def input(self, events):
         for e in events:
             if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE and self.paused:
-                self.paused = False
-                self.swaplist[0].active = True
+                self.start_moving()
+                
+    def start_moving(self):
+        print 'swap game starting to move'
+        self.paused = False
+        self.swaplist[0].active = True
                 
     def play_chime(self):
         sound.play_sound("../sfx/chime" + str( min(11, 1 + self.success_count) ) + ".ogg")

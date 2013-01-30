@@ -89,7 +89,11 @@ class ScrollBox(node.Node):
             s.input_all(events)
         
     def act(self):
-        
+        for s in self.scrollnodes:
+            s.act_all()
+        for s in self.choicenodes:
+            s.act_all()
+            
         #track if up is held
         if self.input_up:
             self.input_up_timer += 1 * game.dt
@@ -165,16 +169,17 @@ class ScrollBox(node.Node):
                 self.scrollnodes.append(tmp)
                 self.disp_rect.move_ip(0,spacing)
             else:
-                print '    ' + line
+                #print '    ' + line
                 lft = line.split('{')[0]
                 rht = line.split('{')[1].split('}')[1]
                 try:
                     a,b = line.split('{')[1].split('}')[0].split('|')
                 except:
-                    a,b = line.split('{')[1].split('}')[0], ''
+                    a,b = line.split('{')[1].split('}')[0], 'ERROR'
                 line_edit = lft + ''.join(['  ' for i in range(max(len(a), len(b)) + 2)]) + rht
                 tmp = textnode.TextNode(line_edit, self.disp_rect.copy())
                 tmp.scaling=True
+                tmp.parent = self
                 self.scrollnodes.append(tmp)
                 choice_rect = self.disp_rect.copy()
                 choice_rect.width = 20 * max(len(a), len(b))
@@ -192,6 +197,7 @@ class ScrollBox(node.Node):
                 if len(a) <= 8:
                     cnode.mode = 'hard'
                 if line != '\n':
+                    cnode.parent = self.parent
                     self.choicenodes.append(cnode)
                 c+=1
                 self.disp_rect.move_ip(0,spacing)

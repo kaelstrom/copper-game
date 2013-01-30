@@ -58,7 +58,7 @@ class ChoiceNode(node.Node):
         
     def draw_all(self):
         self.draw()
-        if self.gamerunning or (not self.choicemade and game.screen.scale_rect(self.rect).collidepoint(pygame.mouse.get_pos())): 
+        if self.gamerunning or (not self.choicemade and game.screen.scale_rect(self.rect.inflate(32,32)).collidepoint(pygame.mouse.get_pos())): 
             outrect = self.rect.move(0,-self.rect.height/2)
             outrect.width += 20
             game.screen.draw_outline(outrect, (0,0,0),0)

@@ -189,6 +189,8 @@ class CommentGame(node.Node):
     def __init__(self, mode="game"):
         super(CommentGame, self).__init__()
         self.scene_viewed = False
+        self.scene_skipped = False
+        self.condition = True
         self.links = []
         self.votes = []
         self.wave_val = 1

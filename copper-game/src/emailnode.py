@@ -65,6 +65,7 @@ class EmailNode(node.Node):
         self.to_contact = game.contacts[self.to.lower()]
         self.vals = [self.swap1vals, self.swap2vals]
         tmp = scrollbox.ScrollBox()
+        tmp.parent = self
         tmp.generate(self.text, self.vals, pygame.Rect(50,230,900,460))
         
         self.add(tmp)

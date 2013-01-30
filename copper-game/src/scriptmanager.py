@@ -39,10 +39,14 @@ class ScriptManager(object):
         #pprint(sort)
         for key in sort:
             val = self.scenes[str(key)]
-            if val.scene_viewed == False:
-                val.scene_viewed = True
-                game.active_node = self.active_node = val
-                return
+            if not val.scene_viewed and not val.scene_skipped:
+                print 'scriptman - evaluating ' + str(val.condition)
+                if eval(str(val.condition)):
+                    val.scene_viewed = True
+                    game.active_node = self.active_node = val
+                    return
+                else:
+                    val.scene_skipped = True
         
     def parse_script_file(self, script_file):
         count = 1
@@ -92,9 +96,11 @@ class ScriptManager(object):
             
     def generate_nodes(self):
         self.scenes['0'] = title.Title()
+        self.scenes['0'].scene_skipped = False
+        self.scenes['0'].condition = True
         for key, val in self.scripts.items():
-            print '----------------'
-            print val.mode
+            #print '----------------'
+            #print val.mode
             if val.mode == 'email':
                 #print vars(val)
                 self.scenes[key] = emailnode.from_script(val)
