@@ -1,4 +1,5 @@
 %%%
+
 Mode email
 Day 1
 Sender Kissinger Systems
@@ -12,6 +13,7 @@ You are to observe and confirm the subject.
 Take no further action.
 
 %%%
+
 Mode email
 Day 1
 Sender Rick
@@ -95,11 +97,26 @@ Were you paying attention in class when the teacher assigned research papers due
 [based on political issue]
 
 %%%
-Mode research
-**Basically I was thinking doing the comment minigame here to show what to research and stuff **like that
 
+Mode email
+Day 4
+Sender Allie
+To John
+Swap1Vals [[3,0,2],[0,0,0]]
+%%
+Hi there John,
+
+Tomorrow I’m very free for a date. How about the {mall|park}? You can pick me up at 6. ;)
+
+Allie
 
 %%%
+Mode research
+**Basically I was thinking doing the comment minigame here to show what to research and stuff **like that
+%%
+
+%%%
+Day 5
 Sender Rick
 To John
 %%
@@ -110,6 +127,7 @@ Did you see Allie in class today? I think she's into you- we could make it happe
 -Rick
 
 %%%
+Day 6
 Sender John
 To Allie
 %%
@@ -163,18 +181,17 @@ Comment2Result (3,-2,0,"Corporate Rights")
 Comment3 Every confidential leak puts U.S. relations and lives at risk. 
 Comment3Result (0,-4,0,"Government and Defense")
 %%
+
 %%%
-Mode email
-Day 4
-Sender Allie
-To John
-Swap1Vals [[3,0,2],[0,0,0]]
+
+Day 19
+Mode: Email
+Sender John
+To Allie
+Conditions None
+Swap1Vals [[0,0,0],[0,4,1]]
 %%
-Hi there John,
-
-Tomorrow I’m very free for a date. How about the {mall|park}? You can pick me up at 6. ;)
-
-Allie
+Hey, how about dinner and a movie? I've got the house to myself tonight with a TV too big for a single person. ;) Bring any good {comedies|documentaries} you've got as well. 
 
 %%%
 
@@ -234,19 +251,22 @@ Allie
 
 %%%
 
-Mode email
-Day 1
-Sender AI
+Mode: Email
+Day 26
+Sender Lawyers4U@lawmeup@hotmail.net
 To John
+Conditions None
 %%
-[final scene]
-[AI talks directly to the user]
+There's a lawsuit happening that everyone should be aware of! There are companies out there that are ruining the habitat for polar bears and endangering the survival of all the Polar Species. Please help us {defeat|join} them by clicking on the link below and signing up for the cause!
+
+www.petitions.com/signup/ {poorpolarbears|weneedmoreoil}
 
 %%%
+
 Mode: Email
+Day 30
 Sender Allie
 To John
-Day 30
 Conditions (GF +Spe and ( +spe or (!- spe and -pol)) or (Gf +pol (+pol or (!-pol and -spe))
 %%
 Hello John,
@@ -255,9 +275,9 @@ Your Girlfriend,
 Allie
 %%%
 Mode: Email
+Day 30
 Sender Allie
 To John
-Day 30
 Conditions (GF + pol and (-pol or (!+pol and +spe)) or (GF +spe and (-spe or (!+spe and +pol))
 %%
 Dear John,
@@ -383,89 +403,21 @@ Conditions (+Suspicion and +Pol and -Spe)
 	Corporation Reveals AI, points finger at certain politicians who threaten Corporation, Politicians Arrested
 
 %%%
-Mode: Email
-Sender John
-To Allie
-Week 2
-Conditions None
-%%
-Hey there Allie,
 
-I found this awesome article and thought you might like it! It's all about {|}. Here's the link,
-www.gogglesearch.com/{|}
-%%%
-Mode: Email
-Sender Allie
+Mode email
+Day 34
+Sender AI
 To John
-Week 2
-Conditions None
 %%
-Hi John : ),
+[final scene]
+[AI talks directly to the user]
 
-	I know this may seem weird, but I was thinking we could celebrate our one week anniversary! Maybe get small gifts for each other and go someplace nice. Tell me what you think!
 %%%
-Mode: Research
-Week 2
-Conditions None
-%%
-RESEARCH FOR ONE WEEK ANNIVERSARY IDEAS
-%%%
+
 Mode: Email
-Sender John
-To Allie
-Week 2
-Conditions None
-%%
-Hi! I was thinking maybe we could go to the local {campgrounds|townsquare} for the {faire|speech}. I think it would be a lot of fun! Tell me what you think : D.
-%%%
-Mode: Email
-Sender John
-To Allie
-Week 3
-Conditions None
-%%
-It turns out that my parents are gonna swing back home for a night and are inviting us to go out and have a nice dinner with them. I was thinking a dinner at {the melting pot|chuckie cheese} and we could {talk|game} afterwards. Would you want to come?
-%%%
-Mode: Email
-Sender Allie
-To John
-Week 3
-Conditions None
-%%
-Well, it seems my half-birthday is coming up this week, and I just wanted to let you know so you wouldn't forget to get me something : D. We could also go to the movies the night before to celebrate!
-%%%
-Mode: Research
-Week 3
-%%
-HALFBIRTHDAY MINIGAME
-%%%
-Mode: Email
-Sender John
-To Allie
-Day 19
-Conditions None
-Swap1Vals [[0,0,0],[0,4,1]]
-%%
-Hey, how about dinner and a movie? I've got the house to myself tonight with a TV too big for a single person. ;) Bring any good {comedies|documentaries} you've got as well. 
-%%%
-Mode: Email
-Sender John
-To Allie
-Week 4
-%%
-I've got a great idea! I heard about {Music Group|Politician} coming in for an event at concert hall near here. We should go, my treat!
-%%%
-Mode: Email
-Sender Allie
-To John
-Week 4
-%%
-Hey, do you want to take a trip down the {sixflags|townhall}. We could have a great time together! Let me know! *kiss*
-%%%
-Mode: Email
+Week 1
 Sender Teacher
 To John
-Week 1
 Swap1Vals [[0,3,0],[1,0,1]]
 %%
 Hello Students,
@@ -478,103 +430,108 @@ the assignment is due by the end of
 the week. The subject you're going to 
 research is {Political|Sports} Psychology. 
 If there are any issues feel free to email me.
+
 %%%
+
 Mode:RESEARCH
 Week 1
 Conditions None
 %%
 RESEARCH MINIGAME
+
 %%%
+
 Mode: Email
+Week 2
+Sender John
+To Allie
+Conditions None
+%%
+Hey there Allie,
+
+I found this awesome article and thought you might like it! It's all about {|}. Here's the link,
+www.gogglesearch.com/{|}
+
+%%%
+
+Mode: Email
+Week 2
+Sender Allie
+To John
+Conditions None
+%%
+Hi John : ),
+
+I know this may seem weird, but I was thinking we could celebrate our one week anniversary! Maybe get small gifts for each other and go someplace nice. Tell me what you think!
+
+%%%
+
+Mode: Research
+Week 2
+Conditions None
+%%
+RESEARCH FOR ONE WEEK ANNIVERSARY IDEAS
+
+%%%
+
+Mode: Email
+Sender John
+To Allie
+Week 2
+Conditions None
+%%
+Hi! I was thinking maybe we could go to the local {campgrounds|townsquare} for the {faire|speech}. I think it would be a lot of fun! Tell me what you think : D.
+
+%%%
+
+Mode: Email
+Week 2
 Sender Teacher
 To John
-Week 2
 %%
 Hello Students,
 
 It's time again to remind everyone about the next part of their assignment. Just keep working slowly and we'll get everything done by the end of the month. Keep at it students!
 
 -Teacher
+
 %%%
+
 Mode: RESEARCH
 Week 2
 Conditions None
 %%
 RESEARCH MINIGAME
+
 %%%
+
 Mode: Email
+Week 2
 Sender Rick
 To John
-Week 2
+
 Conditions None
 %%
 Hey man,
 
 I was thinking that we could head to the {arcade|library} instead of the {library|arcade}. Call me if you're up for it.
-%%%
-Mode: Email
-Sender Teacher
-To John
-Week 3
-Conditions None
-%%
-Hello Students,
 
-I'm coordinating a work study for everyone. The time and place I'll send to everyone once it's set in stone. However it will be sometime in the next week to help with the final writing of the paper. This work study meeting is {not| ' '} mandatory. I hope everyone works hard on the paper and does well!
 %%%
-Mode: Email
-Sender Teacher
-To John
-Week 3
-%%
-Hey kids,
 
-Remember to keep working on the project! Assignment 3 is due by the end of the week. I've felt like you might feel a little lost on what to continue researching about. So I've decided to give you the topic of {blah|blah}. Good luck!
-
--Teacher
-%%%
-Mode: RESEARCH
-Week 3
-Conditions None
-%%
-RESEARCH MINIGAME
-%%%
 Mode: Email
-Sender Rick
-To John
-Week 3
-Conditions None
-%%
-HEY! Let's skip work tomorrow and head down the {paintball field|science fair} instead. We can go there and show those noobs whose boss, whaddya say?!
-%%%
-Mode:Email
-Sender Teacher
-To John
-Week 4
-Conditions None
-%%
-Hello Students,
-
-We're coming into the final part of the paper|project. Keep working through this last week and we'll be done! Good luck everyone, we're almost there!
-%%%
-Mode: RESEARCH
-Week 4
-Conditions None
-%%
-RESEARCH MINIGAME
-%%%
-Mode: Email
+Week 2
 Sender Unknown
 To John
-Week x
 Conditions None
 %%
 This email is to inform you about {sales|virus} in your area! If you just click on the {link|virus} below you can get started on installing this amazing new {program|virus} onto your computer telling you about the amazing {deals|virus} in your area!
+
 %%%
+
 Mode: Email
+Week 2
 Sender John
 To Club Administrator
-Week 2
 Conditions None
 %%
 Hello Teacher,
@@ -583,33 +540,135 @@ I am hoping to sign up for the {tennis|debate} team. Is there any way you can do
 
 Thanks,
 John
+
 %%%
+
 Mode: Email
+Week 2
 Sender DiscountUS@hotmail.net
 To John
-Week 2
 Conditions None
 %%
 Many discounts are here just waiting for you to take advantage of! Come on down to SpendMart to get some great sale opportunities. The deals are ending {[tomorrow]|[yesterday]} so don't wait!
+
 %%%
+
 Mode: Email
+Week 3
+Sender John
+To Allie
+Conditions None
+%%
+It turns out that my parents are gonna swing back home for a night and are inviting us to go out and have a nice dinner with them. I was thinking a dinner at {the melting pot|chuckie cheese} and we could {talk|game} afterwards. Would you want to come?
+
+%%%
+
+Mode: Email
+Week 3
+Sender Allie
+To John
+Conditions None
+%%
+Well, it seems my half-birthday is coming up this week, and I just wanted to let you know so you wouldn't forget to get me something : D. We could also go to the movies the night before to celebrate!
+
+%%%
+
+Mode: Research
+Week 3
+%%
+HALFBIRTHDAY MINIGAME
+
+%%%
+
+Mode: Email
+Week 3
+Sender Teacher
+To John
+Conditions None
+%%
+Hello Students,
+
+I'm coordinating a work study for everyone. The time and place I'll send to everyone once it's set in stone. However it will be sometime in the next week to help with the final writing of the paper. This work study meeting is {not| ' '} mandatory. I hope everyone works hard on the paper and does well!
+
+%%%
+
+Mode: Email
+Week 3
+Sender Teacher
+To John
+%%
+Hey kids,
+
+Remember to keep working on the project! Assignment 3 is due by the end of the week. I've felt like you might feel a little lost on what to continue researching about. So I've decided to give you the topic of {blah|blah}. Good luck!
+
+-Teacher
+
+%%%
+
+Mode: RESEARCH
+Week 3
+Conditions None
+%%
+RESEARCH MINIGAME
+
+%%%
+
+Mode: Email
+Week 3
+Sender Rick
+To John
+Conditions None
+%%
+HEY! Let's skip work tomorrow and head down the {paintball field|science fair} instead. We can go there and show those noobs whose boss, whaddya say?!
+
+%%%
+
+Mode: Email
+Week 3
 Sender workopportunity@findajob.net
 To John
-Week 3
 Conditions None
 %%
 Hello John,
 
 We're emailing to let you know you should come down to the Job Fair this week at the convention center! We've got a lot of great {corporate|political} opportunities here with both jobs and {internships|volunteering} positions available and represented here at the fair. Come on down and take a look!
+
 %%%
+
 Mode: Email
-Sender Lawyers4U@lawmeup@hotmail.net
+Week 4
+Sender John
+To Allie
+%%
+I've got a great idea! I heard about {Music Group|Politician} coming in for an event at concert hall near here. We should go, my treat!
+
+%%%
+
+Mode: Email
+Week 4
+Sender Allie
 To John
-Day 26
+%%
+Hey, do you want to take a trip down the {sixflags|townhall}. We could have a great time together! Let me know! *kiss*
+
+%%%
+
+Mode:Email
+Week 4
+Sender Teacher
+To John
 Conditions None
 %%
-There's a lawsuit happening that everyone should be aware of! There are companies out there that are ruining the habitat for polar bears and endangering the survival of all the Polar Species. Please help us {defeat|join} them by clicking on the link below and signing up for the cause!
+Hello Students,
 
-www.petitions.com/signup/ {poorpolarbears|weneedmoreoil}
+We're coming into the final part of the paper|project. Keep working through this last week and we'll be done! Good luck everyone, we're almost there!
+
+%%%
+
+Mode: RESEARCH
+Week 4
+Conditions None
+%%
+RESEARCH MINIGAME
 
 %%%
