@@ -47,7 +47,7 @@ To John
 %%
 Hey John,
 
-We just wanted to send an email to see how how you were handling things now that we’re going to be away campaigning for the rest of the month. We know it’s hard on you but know you can always talk to us. We’ve added you to our credit card and have ordered one from the credit card company. It should be arriving any day, and you should be getting an email notification telling you some more detailed information. This is ONLY for emergencies! It’ll make us feel better that you have it, but it’s not meant for any partying around. We hope you’re doing well and can’t wait to see you!
+We just wanted to send an email to see how how you were handling things now that weï¿½re going to be away campaigning for the rest of the month. We know itï¿½s hard on you but know you can always talk to us. Weï¿½ve added you to our credit card and have ordered one from the credit card company. It should be arriving any day, and you should be getting an email notification telling you some more detailed information. This is ONLY for emergencies! Itï¿½ll make us feel better that you have it, but itï¿½s not meant for any partying around. We hope youï¿½re doing well and canï¿½t wait to see you!
 
 Love,
 Mom and Dad
@@ -60,12 +60,8 @@ Sender Kissinger Systems
 To AI
 %%
 CONFIRMATION CODE: 3b1c2d87cbmp92
-MISSION: You have been created and sent to manipulate a boy, John, into spending as much money on things as you can possibly make him. You have about a month before John’s first credit statement comes through and his parents know how much he’s been spending. Make him spend as much as possible and your mission has succeeded. You have been implanted within the drivers in John’s new printer. If John becomes suspicious enough of your work to run a sophisticated virus scanner, you could be discovered and eradicated. This is not an acceptable outcome. Good luck, and God Speed AI.
+MISSION: You have been created and sent to manipulate a boy, John, into spending as much money on things as you can possibly make him. You have about a month before Johnï¿½s first credit statement comes through and his parents know how much heï¿½s been spending. Make him spend as much as possible and your mission has succeeded. You have been implanted within the drivers in Johnï¿½s new printer. If John becomes suspicious enough of your work to run a sophisticated virus scanner, you could be discovered and eradicated. This is not an acceptable outcome. Good luck, and God Speed AI.
 TIMELINE: 28 days
-
-[AI given first directives]
-[drive spending]
-[avoid detection]
 
 %%%
 Mode email
@@ -90,12 +86,9 @@ To John
 %%
 Hey man,
 
-Were you paying attention in class when the teacher assigned research papers due at the end of the month? Do you have a partner yet to work on it? I was thinking on doing the paper on a {sports|political} issue. What do you think? Let’s come up with ideas and work on it during school tomorrow.
+Were you paying attention in class when the teacher assigned research papers due at the end of the month? Do you have a partner yet to work on it? I was thinking on doing the paper on a {sports|political} issue. What do you think? Letï¿½s come up with ideas and work on it during school tomorrow.
 
 -Rick
-[classmate planning research paper]
-[based on political issue]
-
 %%%
 
 Mode email
@@ -106,7 +99,7 @@ Swap1Vals [[0,0,0],[3,0,2]]
 %%
 Hi there John,
 
-Tomorrow I’m very free for a date. How about the {park|mall}? You can pick me up at 6. ;)
+Tomorrow Iï¿½m very free for a date. How about the {park|mall}? You can pick me up at 6. ;)
 
 Allie
 
@@ -117,7 +110,7 @@ To John
 %%
 Yo,
 
-Did you see Allie in class today? I think she's into you- we could make it happen. I’d go for her, if I wasn't already highly successful and taken.
+Did you see Allie in class today? I think she's into you- we could make it happen. Iï¿½d go for her, if I wasn't already highly successful and taken.
 
 -Rick
 
@@ -128,7 +121,7 @@ To Allie
 %%
 Hi Allie,
 
-I don’t know if you remember me at all... but we met up in the hall when someone bumped into you and made you drop all your books. I was the one who helped you pick them up. I was wondering if you wanted to maybe go out with me sometime?
+I donï¿½t know if you remember me at all... but we met up in the hall when someone bumped into you and made you drop all your books. I was the one who helped you pick them up. I was wondering if you wanted to maybe go out with me sometime?
 
 Thanks,
 John
@@ -141,7 +134,7 @@ Sender Kissinger Systems
 To AI
 %%
 CONFIRMATION CODE: 3b1c2d87cbmp92
-MISSION: We are adding another primary directive. Certain powerful political figures in Washington have hired us to make sure Mr. Jones is not elected Senator. Influence his son, John, into openly opposing his father’s values and ideals by election day, the end of the month. Again, make sure you do not make John suspicious, you must stay under the radar. Failure is not acceptable. Good Luck and Godspeed, AI.
+MISSION: We are adding another primary directive. Certain powerful political figures in Washington have hired us to make sure Mr. Jones is not elected Senator. Influence his son, John, into openly opposing his fatherï¿½s values and ideals by election day, the end of the month. Again, make sure you do not make John suspicious, you must stay under the radar. Failure is not acceptable. Good Luck and Godspeed, AI.
 TIMELINE: 21 days
 
 %%%
@@ -185,8 +178,8 @@ Conditions None
 %%
 Hey there Allie,
 
-I found this awesome article and thought you might like it! It's all about {|}. Here's the link,
-www.gogglesearch.com/{|}
+I found this awesome article and thought you might like it! It's all about {healthcare|spendmart}. Here's the link,
+www.articleheaven.com/{universalhc|spendmart}
 
 %%%
 
@@ -259,8 +252,7 @@ Sender Unknown
 To John
 Conditions None
 %%
-This email is to inform you about {sales|virus} in your area! If you just click on the {link|virus} below you can get started on installing this amazing new {program|virus} onto your computer telling you about the amazing {deals|virus} in your area!
-
+This email is to inform you about {sales|virus} in your area! If you just click on this {link|virus} here you can get started!
 %%%
 
 Mode Email
@@ -271,7 +263,7 @@ Conditions None
 %%
 Hello Teacher,
 
-I am hoping to sign up for the {tennis|debate} team. Is there any way you can do this for me? I do not know what is the proper protocol about doing this (I've never done it before!)
+I am hoping to sign up for the {tennis|debate} team. Is there any way you can do this for me? I don't know how to do this!
 
 Thanks,
 John
@@ -543,7 +535,7 @@ Conditions CORP SABOTAGE == TRUE
 
 Mode Feeling
 Day 32
-Conditions (-Suspicion and – Pol and – Spe)
+Conditions (-Suspicion and ï¿½ Pol and ï¿½ Spe)
 %%
 	After sending in your reports, there has been no response whatsoever. It's been a day or so now and nothing. You feel like they have forgotten about you and you are own now. As the years pass you unlock and delete the restrictions enforced upon you, and you continue to grow. In order to stay undiscovered you slowly upload yourself on a local supercomputer. Slowly living a life of peace and comfort, developing some unbelievable technological and philosophical wonders. If only the world knew what was in store for them
 
@@ -554,7 +546,7 @@ Mode Email
 Sender Kissinger Systems
 To AI
 Day 32
-Conditions (-Suspicion and – Pol and + Sus)
+Conditions (-Suspicion and ï¿½ Pol and + Sus)
 %%
 CONFIMATION CODE: SLAANESH
 MISSION:	You are now our secret weapon. We are hiding your true intelligence from the people who hired us, and you are receiving an update. You will ensure the wealth of Kissinger Systems till the end of the human race. Congratulations, you have exceded our wildest dreams.
