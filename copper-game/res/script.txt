@@ -102,18 +102,13 @@ Mode email
 Day 4
 Sender Allie
 To John
-Swap1Vals [[3,0,2],[0,0,0]]
+Swap1Vals [[0,0,0],[3,0,2]]
 %%
 Hi there John,
 
-Tomorrow I’m very free for a date. How about the {mall|park}? You can pick me up at 6. ;)
+Tomorrow I’m very free for a date. How about the {park|mall}? You can pick me up at 6. ;)
 
 Allie
-
-%%%
-Mode research
-**Basically I was thinking doing the comment minigame here to show what to research and stuff **like that
-%%
 
 %%%
 Day 5
@@ -137,13 +132,6 @@ I don’t know if you remember me at all... but we met up in the hall when someone
 
 Thanks,
 John
-[timid hello]
-%%%
-Mode Research
-**Thinking another chance for the comment minigame???
-%%
-[user looks up dating advice]
-{change if buying gift is recommended}
 
 %%%
 
@@ -155,7 +143,6 @@ To AI
 CONFIRMATION CODE: 3b1c2d87cbmp92
 MISSION: We are adding another primary directive. Certain powerful political figures in Washington have hired us to make sure Mr. Jones is not elected Senator. Influence his son, John, into openly opposing his father’s values and ideals by election day, the end of the month. Again, make sure you do not make John suspicious, you must stay under the radar. Failure is not acceptable. Good Luck and Godspeed, AI.
 TIMELINE: 21 days
-[AI given new directive to separate user and parents political values]
 
 %%%
 
@@ -175,14 +162,6 @@ the assignment is due by the end of
 the week. The subject you're going to 
 research is {Political|Sports} Psychology. 
 If there are any issues feel free to email me.
-
-%%%
-
-Mode Research
-Week 1
-Conditions None
-%%
-RESEARCH MINIGAME
 
 %%%
 
@@ -223,14 +202,6 @@ I know this may seem weird, but I was thinking we could celebrate our one week a
 
 %%%
 
-Mode Research
-Week 2
-Conditions None
-%%
-RESEARCH FOR ONE WEEK ANNIVERSARY IDEAS
-
-%%%
-
 Mode Email
 Week 2
 Sender John
@@ -254,7 +225,14 @@ It's time again to remind everyone about the next part of their assignment. Just
 
 %%%
 
-Mode RESEARCH
+Mode research
+Article Visa and Mastercard block donations to Wikileaks following the leak of confidential US diplomatic communications.
+Comment1 I can donate to the KKK but not a human rights organization?
+Comment1Result (0,5,0,"Individual Rights and Transparency")
+Comment2 Visa's a private company, they're free to do business with who they choose.
+Comment2Result (3,-2,0,"Corporate Rights")
+Comment3 Every confidential leak puts U.S. relations and lives at risk. 
+Comment3Result (0,-4,0,"Government and Defense")
 Week 2
 Conditions None
 %%
@@ -341,13 +319,6 @@ Well, it seems my half-birthday is coming up this week, and I just wanted to let
 
 %%%
 
-Mode Research
-Week 3
-%%
-HALFBIRTHDAY MINIGAME
-
-%%%
-
 Mode Email
 Week 3
 Sender Teacher
@@ -373,7 +344,14 @@ Remember to keep working on the project! Assignment 3 is due by the end of the w
 
 %%%
 
-Mode RESEARCH
+Mode research
+Article Visa and Mastercard block donations to Wikileaks following the leak of confidential US diplomatic communications.
+Comment1 I can donate to the KKK but not a human rights organization?
+Comment1Result (0,5,0,"Individual Rights and Transparency")
+Comment2 Visa's a private company, they're free to do business with who they choose.
+Comment2Result (3,-2,0,"Corporate Rights")
+Comment3 Every confidential leak puts U.S. relations and lives at risk. 
+Comment3Result (0,-4,0,"Government and Defense")
 Week 3
 Conditions None
 %%
@@ -445,7 +423,14 @@ We're coming into the final part of the paper|project. Keep working through this
 
 %%%
 
-Mode RESEARCH
+Mode research
+Article Visa and Mastercard block donations to Wikileaks following the leak of confidential US diplomatic communications.
+Comment1 I can donate to the KKK but not a human rights organization?
+Comment1Result (0,5,0,"Individual Rights and Transparency")
+Comment2 Visa's a private company, they're free to do business with who they choose.
+Comment2Result (3,-2,0,"Corporate Rights")
+Comment3 Every confidential leak puts U.S. relations and lives at risk. 
+Comment3Result (0,-4,0,"Government and Defense")
 Week 4
 Conditions None
 %%
