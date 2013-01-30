@@ -38,7 +38,7 @@ class ChoiceNode(node.Node):
         self.choicemade = True
         self.gamerunning = False
         self.children[0], self.children[1] = self.children[1], self.children[0]
-        self.teenvalue.add(self.vals[1])
+        self.vals[0], self.vals[1] = self.vals[1], self.vals[0]
         self.children[0].text = self.game.result_text
         self.parent.set_all('plasma', False)
         self.parent.set_all('choicemade', True)

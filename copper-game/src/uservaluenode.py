@@ -37,7 +37,7 @@ class UserValueNode(node.Node):
         for blurb, i in enumerate(self.blurbs):
             game.screen.draw_text(blurb, self.rect.move(0,i*50), centered=True)
         
-    def add(self, vals):
+    def add_vals(self, vals):
         self.spending += vals[0]
         self.political += vals[1]
         self.suspicion += vals[2]       

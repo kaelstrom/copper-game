@@ -68,10 +68,14 @@ class EmailNode(node.Node):
         tmp = scrollbox.ScrollBox()
         tmp.parent = self
         tmp.generate(self.text, self.vals, pygame.Rect(50,230,900,460))
-        
+        self.scrollbox = tmp
         self.add(tmp)
-        self.add(continuenode.ContinueNode(rect=pygame.Rect(600,800,240,60)))
+        self.add(continuenode.ContinueNode(rect=pygame.Rect(600,800,240,60, callback=self.end_email)))
         self.add(game.teenvalue)
+
+    def end_email(self):
+        self.scrollbox.eval_choices()
+        game.scriptmanager.next_scene()
 
 def test_email():
         tmp = EmailNode(

@@ -130,6 +130,10 @@ class ScrollBox(node.Node):
             s.rect.move_ip(0,-val)
         self.scroll_bar_rect.move_ip(0, self.scroll_bar_dist * (val / (self.scroll_bounds[1] - self.scroll_bounds[0])))
         
+    def eval_choices(self):
+        for c in self.choicenodes:
+            game.teenvalue.add_vals(c.vals[0])
+        
     def generate(self, text, vals=None, rect=pygame.Rect(100,100,100,100)):
 
         self.text = text

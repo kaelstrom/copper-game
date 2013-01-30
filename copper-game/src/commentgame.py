@@ -7,6 +7,7 @@ import math
 import copy
 import continuenode
 import helpnode
+import json
 
 class Link(node.Node):
     def __init__(self, mode="basic", rect=pygame.Rect(0,0,16,16)):
@@ -144,6 +145,7 @@ class Comment(node.Node):
         self.index = index
         self.upvotes = 0
         self.downvotes = 0
+        self.total = 0
         self.upvote_rect =     pygame.Rect(self.rect.x + self.rect.height*.5, self.rect.y, self.rect.height, self.rect.height)
         self.downvote_rect = pygame.Rect(self.rect.right - self.rect.height*1.5, self.rect.y, self.rect.height, self.rect.height)
         self.text_rect_a = pygame.Rect(self.upvote_rect.right, self.rect.y, self.downvote_rect.left - self.upvote_rect.right,self.rect.height/2)
@@ -158,6 +160,7 @@ class Comment(node.Node):
             self.upvotes += 1
         if v.val < 0:
             self.downvotes -= 1
+        self.total = self.upvotes - self.downvotes
         
     def create_link_cycle(self):
         r = pygame.Rect(0,0,16,16)
@@ -249,6 +252,10 @@ class CommentGame(node.Node):
                                                         com3="Comment 3", com3r=(0,0,0,"art1 - com3 chosen")):
         self.links = []
         self.votes = []
+        self.cbutton = continuenode.ContinueNode("CONTINUE", pygame.Rect(600, 10, 300, 80), self.end_game)
+        self.cbutton.fade = .2
+        self.cbutton.fade_rate = .00
+        self.add(self.cbutton)
         self.waves_rect = pygame.Rect(10, 10, 100,100)
         self.begin_button = continuenode.ContinueNode("BEGIN", 
                                                                                 rect=pygame.Rect(100, 10, 200, 80),
@@ -263,6 +270,17 @@ class CommentGame(node.Node):
         self.switch_bg_rect = pygame.Rect(75,275, 850, 250)
         self.create_links_v1()
         #self.create_votes()
+    
+    def end_game(self):
+        result = [0,0,0]
+        if self.com3.total > self.com2.total and self.com3.total > self.com1.total:
+            result = [self.com3r[0], self.com3r[1], self.com3r[2]]
+        elif self.com2.total > self.com3.total and self.com2.total > self.com1.total:
+            result = [self.com2r[0], self.com2r[1], self.com2r[2]]
+        else:
+            result = [self.com1r[0], self.com1r[1], self.com1r[2]]
+        game.teenvalue.add_vals(result)
+        game.script.next_scene()
     
     def slink(self, child, index):
         if index >= 0 and index < len(self.links):
@@ -415,6 +433,8 @@ class CommentGame(node.Node):
     def wave_spawner(self):
         if self.waves == 0:
             self.waves_active = False
+            if self.cbutton.fade_rate == .00:
+                self.cbutton.fade_rate = .001
         if self.waves_active:
             self.wave_clock -= game.dt
             if self.wave_clock <= 0:
@@ -462,6 +482,10 @@ class CommentGame(node.Node):
         
 def from_script(val):
     result = CommentGame()
+    print vars(val)
+    val.comment1result = json.loads(val.comment1result)
+    val.comment2result = json.loads(val.comment2result)
+    val.comment3result = json.loads(val.comment3result)
     result.generate(val.article, val.comment1, val.comment1result,
                                             val.comment2, val.comment2result,
                                             val.comment3, val.comment3result)

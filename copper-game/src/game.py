@@ -4,7 +4,7 @@ import pygame
 
 game = None
 screen = None
-scriptmanager = None
+scriptmanager = script = None
 active_node = None
 contacts = {}
 dt = 0
